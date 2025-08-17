@@ -1,0 +1,1271 @@
+/* Importação da fonte Inter do Google Fonts - DEVE vir primeiro */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset CSS básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remover sublinhados de TODOS os links */
+a, a:hover, a:focus, a:visited {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+/* Estilos específicos para cards do menu */
+.nav-card {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.12), rgba(168, 85, 247, 0.12), rgba(6, 182, 212, 0.12)) !important;
+  border: 2px solid rgba(236, 72, 153, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(236, 72, 153, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.nav-card:hover {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.2), rgba(6, 182, 212, 0.2)) !important;
+  border-color: rgba(236, 72, 153, 0.5) !important;
+  box-shadow: 0 12px 40px rgba(236, 72, 153, 0.25) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Variáveis CSS personalizadas para cores do tema */
+:root {
+  --color-primary: #FF4DA6;      /* Rosa vibrante */
+  --color-secondary: #8B5CF6;    /* Roxo */
+  --color-accent: #06B6D4;       /* Azul ciano */
+  --color-dark: #000000;         /* PRETO PURO */
+  --color-dark-gray: #111111;    /* Cinza muito escuro */
+  --color-light-gray: #CCCCCC;   /* Cinza claro */
+  --color-white: #FFFFFF;        /* Branco */
+}
+
+/* Reset e estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos base do body */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--color-dark) !important; /* PRETO FORÇADO */
+  color: var(--color-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* HTML também com fundo preto */
+html {
+  background-color: var(--color-dark) !important;
+}
+
+/* Main com fundo preto */
+main {
+  background-color: var(--color-dark) !important;
+}
+
+/* Container personalizado */
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Responsividade para dispositivos pequenos */
+@media (max-width: 640px) {
+  .container-custom {
+    padding: 0 0.75rem;
+  }
+  
+  /* Habilidades técnicas mobile */
+  .flex-1 h3.text-xl {
+    font-size: 1.125rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .flex-1 .space-y-10 {
+    gap: 2rem !important;
+  }
+  
+  .flex-1 h4.text-base {
+    font-size: 0.875rem !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .flex-1 .gap-1 {
+    gap: 0.25rem !important;
+  }
+  
+  .flex-1 .text-sm {
+    font-size: 0.75rem !important;
+  }
+  
+  .flex-1 .px-10, .flex-1 .px-12 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  .flex-1 .py-4 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+  
+  .flex-1 .rounded-lg {
+    border-radius: 0.375rem !important;
+  }
+  
+  .flex-1 .m-4 {
+    margin: 0.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-custom {
+    padding: 0 0.5rem;
+  }
+  
+  /* Habilidades técnicas mobile pequeno */
+  .flex-1 h3.text-xl {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .flex-1 .space-y-10 {
+    gap: 1.5rem !important;
+  }
+  
+  .flex-1 h4.text-base {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.375rem !important;
+  }
+  
+  .flex-1 .gap-1 {
+    gap: 0.125rem !important;
+  }
+  
+  .flex-1 .text-sm {
+    font-size: 0.625rem !important;
+  }
+  
+  .flex-1 .px-10, .flex-1 .px-12 {
+    padding-left: 0.375rem !important;
+    padding-right: 0.375rem !important;
+  }
+  
+  .flex-1 .py-4 {
+    padding-top: 0.125rem !important;
+    padding-bottom: 0.125rem !important;
+  }
+  
+  .flex-1 .rounded-lg {
+    border-radius: 0.25rem !important;
+  }
+  
+  .flex-1 .m-4 {
+    margin: 0.125rem !important;
+  }
+}
+
+/* Gradiente de texto */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Estilos de cards com hover */
+.card-hover {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(255, 77, 166, 0.2);
+}
+
+/* Cursor personalizado */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  /* SEM transições para máxima responsividade */
+  transition: none;
+  /* Otimizações de performance */
+  will-change: transform;
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.custom-cursor.hover {
+  mix-blend-mode: normal;
+}
+
+/* Cursor padrão para elementos interativos */
+a, button, .nav-card, .contact-icon, .card-hover, .btn-primary, input, textarea {
+  cursor: pointer;
+}
+
+/* Estilos de botões */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(255, 77, 166, 0.4) !important;
+}
+
+/* Botão secundário */
+.btn-secondary {
+  background: var(--color-dark);
+  color: var(--color-light-gray);
+  padding: 12px 24px;
+  border: 1px solid var(--color-dark);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  transition: left 0.8s ease;
+  z-index: 1;
+}
+
+.btn-secondary:hover::before {
+  left: 0;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Estilos de scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+}
+
+/* Animações */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+/* Estilos para menu em formato de cards */
+.nav-card {
+  background: rgba(255, 77, 166, 0.1);
+  border: 1px solid rgba(255, 77, 166, 0.3);
+  border-radius: 12px;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--color-white);
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.nav-card:hover {
+  background: rgba(255, 77, 166, 0.2);
+  border-color: rgba(255, 77, 166, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 77, 166, 0.3);
+}
+
+/* Estilos para ícones de contato */
+.contact-icon {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.contact-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 77, 166, 0.4);
+}
+
+/* Remover sublinhados de todos os links */
+a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* CURSOR PERSONALIZADO - REMOVIDO PARA EVITAR CONFLITO */
+
+/* CURSOR PERSONALIZADO - ANIMAÇÕES REMOVIDAS PARA EVITAR CONFLITO */
+
+/* GARANTIR FUNDO PRETO EM TODOS OS ELEMENTOS */
+#__next {
+  background-color: var(--color-dark) !important;
+}
+
+div[data-nextjs-page] {
+  background-color: var(--color-dark) !important;
+}
+
+/* Seções específicas com fundo preto */
+section {
+  background-color: var(--color-dark) !important;
+}
+
+/* Footer com fundo escuro mas não preto */
+footer {
+  background-color: var(--color-dark-gray) !important;
+}
+
+/* Grid responsivo */
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Flexbox utilities */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+/* Spacing utilities */
+.gap-8 {
+  gap: 2rem;
+}
+
+.gap-12 {
+  gap: 3rem;
+}
+
+.gap-16 {
+  gap: 4rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+.space-y-8 > * + * {
+  margin-top: 2rem;
+}
+
+/* Text sizing */
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-base {
+  font-size: 1rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+}
+
+/* Font weights */
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+/* Margins and padding */
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.pt-16 {
+  padding-top: 4rem;
+}
+
+/* Responsive text */
+@media (min-width: 768px) {
+  .md\:text-6xl {
+    font-size: 3.75rem;
+  }
+  
+  .md\:text-xl {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:text-7xl {
+    font-size: 4.5rem;
+  }
+}
+
+/* Hover effects - mais suaves */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.hover\:scale-110:hover {
+  transform: scale(1.1);
+}
+
+/* Transitions - mais suaves */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+
+/* Border radius - mais moderno */
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-lg {
+  border-radius: 0.75rem;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+.rounded-2xl {
+  border-radius: 1.25rem;
+}
+
+/* Overflow */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Position */
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+/* Z-index */
+.z-10 {
+  z-index: 10;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+/* Top, left, right, bottom */
+.top-0 {
+  top: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+/* Transform */
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+}
+
+.-translate-y-1\/2 {
+  --tw-translate-y: -50%;
+}
+
+/* Width and height */
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.h-6 {
+  height: 1.5rem;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.h-10 {
+  height: 2.5rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
+.h-40 {
+  height: 10rem;
+}
+
+.w-80 {
+  width: 20rem;
+}
+
+.h-80 {
+  height: 20rem;
+}
+
+.w-96 {
+  width: 24rem;
+}
+
+.h-96 {
+  height: 24rem;
+}
+
+/* Min height */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* Sobreposição específica para a foto do About no desktop */
+@media (min-width: 1024px) {
+  .about-photo-desktop {
+    width: 500px !important;
+    height: 500px !important;
+  }
+}
+
+/* Text alignment */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Display */
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+/* Visibility */
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-20 {
+  opacity: 0.2;
+}
+
+.opacity-30 {
+  opacity: 0.3;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+/* Border */
+.border {
+  border-width: 1px;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.border-4 {
+  border-width: 4px;
+}
+
+.border-t {
+  border-top-width: 1px;
+}
+
+/* Blur */
+.blur-xl {
+  filter: blur(24px);
+}
+
+/* Animation */
+.animate-pulse {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .7;
+  }
+}
+
+/* Delay utilities */
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+.delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.delay-2000 {
+  animation-delay: 2s;
+}
+
+.delay-2500 {
+  animation-delay: 2.5s;
+}
+
+.delay-3000 {
+  animation-delay: 3s;
+}
+
+/* Efeito de brilho para os cards de contato */
+.contact-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.contact-card:hover::before {
+  left: 100%;
+}
+
+/* Animação de entrada para os ícones */
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.05);
+  }
+}
+
+.icon-float {
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.icon-float:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.icon-float:nth-child(3) {
+  animation-delay: 1s;
+}
+
+/* Estilos específicos para ícones de contato */
+.contact-icon {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.contact-icon:hover {
+  transform: scale(1.1) translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.contact-icon svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
+}
+
+/* Garantir que NENHUM texto apareça ao lado dos ícones */
+.contact-icon span,
+.contact-icon div:not(:first-child),
+.contact-icon *:not(svg) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Forçar botões retangulares na seção de serviços */
+.featured-services-section button,
+.featured-services-section .group > div,
+.featured-services-section [class*="py-8"],
+.featured-services-section [class*="py-10"] {
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0px !important;
+}
+
+/* Estilos específicos para botões de serviços */
+.service-button,
+.cta-button {
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0px !important;
+}
+
+/* FORÇAR tamanho dos ícones do menu desktop */
+.nav-card svg,
+.nav-card svg * {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  font-size: 20px !important;
+}
+
+/* Forçar tamanho específico para ícones do menu desktop */
+nav svg,
+nav svg * {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  font-size: 20px !important;
+}
+
+/* Footer responsivo para mobile - mantendo desktop intacto */
+@media (max-width: 768px) {
+  /* Layout mobile do footer */
+  footer .flex.flex-wrap {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    text-align: center !important;
+  }
+  
+  /* Espaçamento mobile */
+  footer .py-12 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Títulos mobile */
+  footer h3.text-2xl {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  footer h4.text-xl {
+    font-size: 1.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Ícones mobile */
+  footer .w-12.h-12 {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+  
+  footer svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  /* Espaçamento entre elementos */
+  footer .space-x-4 {
+    gap: 1rem !important;
+  }
+  
+  /* Container mobile */
+  footer .container-custom {
+    padding: 0 1rem !important;
+  }
+  
+
+}
+
+/* Botão flutuante WhatsApp - visível apenas no desktop */
+.floating-whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(255, 77, 166, 0.4);
+  z-index: 9999;
+  transition: transform 0.2s ease;
+  color: white;
+}
+
+.floating-whatsapp-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Ícone dentro do botão */
+.floating-whatsapp-btn svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Botão WhatsApp responsivo no mobile */
+@media (max-width: 768px) {
+  .floating-whatsapp-btn {
+    position: static !important; /* não é mais fixo */
+    bottom: auto !important;
+    right: auto !important;
+    width: 80px !important; /* largura fixa para ficar redondo */
+    height: 80px !important; /* altura fixa para ficar redondo */
+    margin: 1rem auto !important;
+    border-radius: 50% !important; /* redondo */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important; /* sem padding para manter redondo */
+    text-decoration: none !important;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+  }
+
+  .floating-whatsapp-btn svg {
+    width: 32px !important;
+    height: 32px !important;
+    margin: 0 !important; /* remove margens para centralizar */
+    display: block !important; /* garante que seja um bloco */
+  }
+}
+
+/* Breakpoint específico para mobile menor - WhatsApp */
+@media (max-width: 640px) {
+  .floating-whatsapp-btn {
+    position: static !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 70px !important; /* menor no mobile pequeno */
+    height: 70px !important;
+    margin: 1rem auto !important;
+    border-radius: 50% !important; /* redondo */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important; /* sem padding para manter redondo */
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+  }
+
+  .floating-whatsapp-btn svg {
+    width: 28px !important;
+    height: 28px !important;
+    margin: 0 !important; /* remove margens para centralizar */
+    display: block !important; /* garante que seja um bloco */
+  }
+}
+
+/* Menu mobile centralizado */
+@media (max-width: 768px) {
+  /* Container do menu mobile */
+  div[class*="border-t"][class*="py-0.5"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  
+  /* Navegação mobile */
+  nav.flex.flex-col.items-center.space-y-0 {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Cards do menu mobile */
+  .nav-card {
+    margin: 0 auto !important;
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 200px !important;
+  }
+}
+
+/* Habilidades técnicas centralizadas no mobile */
+@media (max-width: 768px) {
+  /* Container principal das habilidades */
+  .flex-1 {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Título das habilidades */
+  .flex-1 h3.text-xl {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Container das categorias */
+  .flex-1 .space-y-10 {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Categorias individuais */
+  .flex-1 .space-y-10 > div {
+    width: 100% !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Títulos das categorias */
+  .flex-1 h4.text-base {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Grid das habilidades */
+  .flex-1 .flex.flex-wrap.gap-1 {
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Cards de habilidades técnicas centralizados no mobile */
+@media (max-width: 768px) {
+  /* Cards individuais das habilidades */
+  .flex-1 .inline-block.text-sm {
+    display: inline-block !important;
+    text-align: center !important;
+    margin: 0.25rem auto !important;
+    justify-self: center !important;
+    align-self: center !important;
+  }
+  
+  /* Container flex das habilidades */
+  .flex-1 .flex.flex-wrap.gap-1 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  
+  /* Cada card de habilidade */
+  .flex-1 .flex.flex-wrap.gap-1 > span {
+    margin: 0.25rem !important;
+    display: inline-block !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* Botão secundário do Hero - correção de animação */
+.btn-secondary {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: white !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  width: auto !important;
+  min-width: 200px !important;
+  position: relative !important;
+  z-index: 1 !important;
+  text-shadow: none !important;
+  font-size: 1.125rem !important;
+  padding: 1rem 2rem !important;
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary) !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.btn-secondary:not(:hover) {
+  background: transparent !important;
+  color: var(--color-primary) !important;
+  transform: scale(1) !important;
+  border-color: var(--color-primary) !important;
+}
+
+/* Garantir que o texto seja sempre visível */
+.btn-secondary span,
+.btn-secondary {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+}
+
+
+
+/* NOVO: Botão de contato com estilos específicos */
+.contact-button {
+  background: transparent !important;
+  border: 2px solid #ff4d8d !important;
+  border-radius: 8px !important;
+  color: #ff4d8d !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  width: auto !important;
+  min-width: 200px !important;
+  font-size: 18px !important;
+  padding: 16px 32px !important;
+}
+
+.contact-button:hover {
+  background: #ff4d8d !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+}
+
+
+
+
