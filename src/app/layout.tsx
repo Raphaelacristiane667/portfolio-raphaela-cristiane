@@ -96,9 +96,9 @@ export default function RootLayout({
           Favicons para diferentes dispositivos e navegadores
           Estes ícones aparecem na aba do navegador e favoritos
         */}
-        <link rel="icon" href="/favicon.ico?v=2" />
-        <link rel="shortcut icon" href="/favicon.ico?v=2" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+        <link rel="icon" href="/favicon.png?v=1" />
+        <link rel="shortcut icon" href="/favicon.png?v=1" />
+        <link rel="icon" type="image/png" href="/favicon.png?v=1" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
         
