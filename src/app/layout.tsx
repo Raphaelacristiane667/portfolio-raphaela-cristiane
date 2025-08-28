@@ -5,6 +5,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import ThemeProvider from "@/components/ThemeProvider";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Configuração da fonte Inter do Google Fonts
 // Esta fonte é otimizada para leitura em telas e é carregada de forma eficiente
@@ -119,13 +121,18 @@ export default function RootLayout({
         Corpo da página com fonte Inter, fundo preto e texto cinza claro
         antialiased melhora a renderização das fontes
       */}
-      <body className={`${inter.className} bg-black text-gray-300 antialiased`}>
+      <body className={`${inter.className} antialiased bg-white text-black dark:bg-black dark:text-gray-300`}>
         
         {/* 
           Header fixo que permanece visível ao rolar a página
           Contém navegação e informações principais
         */}
-        <Header />
+        <ThemeProvider>
+          <div className="fixed right-3 top-3 z-[60] md:right-4 md:top-4">
+            <ThemeToggle />
+          </div>
+          <Header />
+        </ThemeProvider>
         
         {/* 
           Container principal com padding-top para compensar o header fixo
