@@ -90,8 +90,8 @@ export default function RootLayout({
   children: React.ReactNode; // Tipo TypeScript para o conteúdo
 }>) {
   return (
-    // Elemento HTML raiz com idioma português e tema escuro
-    <html lang="pt-BR" className="dark">
+    // Elemento HTML raiz com idioma português; o ThemeProvider controla a classe `dark`
+    <html lang="pt-BR">
       <head>
         {/* 
           Favicons para diferentes dispositivos e navegadores
