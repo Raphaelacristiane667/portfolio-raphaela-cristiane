@@ -24,7 +24,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="py-12 border-t" style={{ backgroundColor: '#000000 !important', borderColor: 'rgba(255, 77, 166, 0.2)' }}>
+    <footer className="py-12 border-t bg-white dark:bg-black border-black/10 dark:border-pink-500/20 text-black dark:text-gray-300">
       <div className="container-custom">
         {/* Layout horizontal com todas as informações lado a lado em uma linha */}
         <div className="flex flex-wrap items-center justify-center gap-12">
@@ -38,7 +38,7 @@ export default function Footer() {
             className="text-center"
           >
             <h3 className="text-2xl font-bold text-gradient mb-4">Raphaela Cristiane</h3>
-            <p className="leading-relaxed max-w-xs" style={{ color: 'var(--color-light-gray)' }}>
+            <p className="leading-relaxed max-w-xs text-gray-700 dark:text-gray-300">
               🚀 Criando soluções digitais completas. 
               Desenvolvedora apaixonada por criar experiências digitais únicas.
             </p>
@@ -52,16 +52,11 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h4 className="text-xl font-semibold mb-4" style={{ color: 'var(--color-secondary)' }}>Contato</h4>
+            <h4 className="text-xl font-semibold mb-4 text-purple-500 dark:text-[var(--color-secondary)]">Contato</h4>
             <div className="flex space-x-4">
               <a
                 href="mailto:raphaelacristiane668@gmail.com"
-                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-                style={{
-                  backgroundColor: '#000000 !important',
-                  border: '1px solid var(--color-primary)',
-                  color: 'var(--color-primary)'
-                }}
+                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border text-pink-500 border-pink-500/60 bg-white dark:bg-black"
                 title="Enviar email"
               >
                 <Mail size={20} />
@@ -70,12 +65,7 @@ export default function Footer() {
                 href="https://wa.me/5534998828211?text=Olá Raphaela! Gostaria de conversar sobre um projeto."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-                style={{
-                  backgroundColor: '#000000 !important',
-                  border: '1px solid var(--color-primary)',
-                  color: 'var(--color-primary)'
-                }}
+                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border text-pink-500 border-pink-500/60 bg-white dark:bg-black"
                 title="Conversar no WhatsApp"
               >
                 <MessageCircle size={20} />
@@ -91,7 +81,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h4 className="text-xl font-semibold mb-4" style={{ color: 'var(--color-secondary)' }}>Redes Sociais</h4>
+            <h4 className="text-xl font-semibold mb-4 text-purple-500 dark:text-[var(--color-secondary)]">Redes Sociais</h4>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -101,12 +91,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300"
-                  style={{
-                    backgroundColor: '#000000 !important',
-                    border: '1px solid var(--color-primary)',
-                    color: 'var(--color-primary)'
-                  }}
+                  className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 border text-pink-500 border-pink-500/60 bg-white dark:bg-black"
                   aria-label={social.label}
                 >
                   <social.icon size={20} />
