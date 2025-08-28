@@ -19,7 +19,7 @@ export default function FloatingWhatsApp() {
   return (
     // Container flutuante fixo no canto inferior direito
     <a
-      href="https://wa.me/5534998828211?text=Olá Raphaela! Gostaria de conversar sobre um projeto."
+      href="https://wa.me/553499385291?text=Olá Raphaela! Gostaria de conversar sobre um projeto."
       target="_blank"
       rel="noopener noreferrer"
       className="floating-whatsapp-btn"
