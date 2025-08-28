@@ -91,7 +91,9 @@ export default function Header() {
                   <Link
                     href={link.href}
                     className={`nav-card relative px-4 py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer overflow-hidden block text-center min-w-[120px] text-sm flex items-center justify-center space-x-2 ${
-                      isActive ? 'text-white' : 'text-gray-300 hover:text-white'
+                      isActive 
+                        ? 'text-white' 
+                        : 'text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                     }`}
                     style={{ 
                       textDecoration: 'none',
