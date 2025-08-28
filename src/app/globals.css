@@ -399,24 +399,20 @@ a {
 
 /* CURSOR PERSONALIZADO - ANIMAÇÕES REMOVIDAS PARA EVITAR CONFLITO */
 
-/* GARANTIR FUNDO PRETO EM TODOS OS ELEMENTOS */
-#__next {
-  background-color: var(--color-dark) !important;
-}
+/* Fundos reativos ao tema */
+html.dark #__next { background-color: var(--color-dark) !important; }
+html:not(.dark) #__next { background-color: #ffffff !important; }
 
-div[data-nextjs-page] {
-  background-color: var(--color-dark) !important;
-}
+html.dark div[data-nextjs-page] { background-color: var(--color-dark) !important; }
+html:not(.dark) div[data-nextjs-page] { background-color: #ffffff !important; }
 
-/* Seções específicas com fundo preto */
-section {
-  background-color: var(--color-dark) !important;
-}
+/* Seções acompanham o tema (escuro/claro) */
+html.dark section { background-color: var(--color-dark) !important; }
+html:not(.dark) section { background-color: #ffffff !important; }
 
-/* Footer com fundo escuro mas não preto */
-footer {
-  background-color: var(--color-dark-gray) !important;
-}
+/* Footer acompanha o tema */
+html.dark footer { background-color: var(--color-dark-gray) !important; }
+html:not(.dark) footer { background-color: #f5f5f5 !important; }
 
 /* Grid responsivo */
 .grid {
