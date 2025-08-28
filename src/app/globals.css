@@ -413,9 +413,11 @@ a {
 /* CURSOR PERSONALIZADO - ANIMAÇÕES REMOVIDAS PARA EVITAR CONFLITO */
 
 /* Fundos reativos ao tema */
+/* Fundo do wrapper principal acompanha o tema */
 html.dark #__next { background-color: var(--color-dark) !important; }
 html:not(.dark) #__next { background-color: #ffffff !important; }
 
+/* Evitar faixas pretas no tema claro */
 html.dark div[data-nextjs-page] { background-color: var(--color-dark) !important; }
 html:not(.dark) div[data-nextjs-page] { background-color: #ffffff !important; }
 
