@@ -91,7 +91,7 @@ export default function Header() {
               const isActive = isActiveLink(link.href);
               
               return (
-                <div key={link.name} className="relative group">
+                <div key={link.name} className="relative group md:mx-3 lg:mx-4 xl:mx-5">
                   <Link
                     href={link.href}
                     className={`nav-card relative px-4 py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer overflow-hidden block text-center min-w-[120px] text-sm flex items-center justify-center space-x-2 ${
