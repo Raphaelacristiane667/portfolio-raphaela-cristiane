@@ -92,7 +92,7 @@ export default function FeaturedServices() {
   }, []);
 
   return (
-    <section className="featured-services-section py-20 overflow-hidden" style={{ backgroundColor: 'var(--color-dark)' }}>
+    <section className="featured-services-section py-20 overflow-hidden bg-white dark:bg-[var(--color-dark)]">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -101,10 +101,10 @@ export default function FeaturedServices() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient text-gray-900 dark:text-white">
             Serviços em Destaque
           </h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--color-light-gray)' }}>
+          <p className="text-xl max-w-3xl mx-auto leading-relaxed text-gray-700 dark:text-gray-300">
             Soluções digitais completas para transformar suas ideias em realidade
           </p>
         </motion.div>
@@ -197,9 +197,8 @@ export default function FeaturedServices() {
                       </div>
                       
                       <CardTitle 
-                        className="text-2xl font-bold text-center mb-3 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text" 
+                        className="text-2xl font-bold text-center mb-3 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text text-gray-900 dark:text-white" 
                         style={{ 
-                          color: 'var(--color-white)',
                           background: `linear-gradient(135deg, ${service.color})`,
                           backgroundClip: 'text',
                           WebkitBackgroundClip: 'text'
@@ -209,8 +208,7 @@ export default function FeaturedServices() {
                       </CardTitle>
                       
                       <CardDescription 
-                        className="text-center leading-relaxed transition-all duration-500 text-base" 
-                        style={{ color: 'rgba(255, 255, 255, 0.85)' }}
+                        className="text-center leading-relaxed transition-all duration-500 text-base text-gray-700 dark:text-gray-300" 
                       >
                         {service.description}
                       </CardDescription>
@@ -233,8 +231,7 @@ export default function FeaturedServices() {
                               <div className="w-1 h-1 bg-white rounded-full opacity-80"></div>
                             </div>
                             <span 
-                              className="text-sm leading-relaxed transition-all duration-500 font-medium" 
-                              style={{ color: 'rgba(255, 255, 255, 0.9)' }}
+                              className="text-sm leading-relaxed transition-all duration-500 font-medium text-gray-700 dark:text-gray-200" 
                             >
                               {feature}
                             </span>
