@@ -85,7 +85,7 @@ export default function Header() {
           </Link>
 
           {/* Menu Desktop - Design Limpo e Elegante */}
-          <nav className="hidden md:flex items-center justify-center md:gap-6 lg:gap-8">
+          <nav className="hidden md:flex items-center justify-center md:px-4 lg:px-6 md:gap-8 xl:gap-12">
             {navLinks.map((link, index) => {
               const IconComponent = link.icon;
               const isActive = isActiveLink(link.href);
