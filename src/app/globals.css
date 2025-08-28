@@ -30,6 +30,14 @@ a, a:hover, a:focus, a:visited {
   transform: translateY(-2px) scale(1.02) !important;
 }
 
+/* Espaçamento horizontal apenas no desktop para os botões do menu */
+@media (min-width: 768px) {
+  .nav-card {
+    margin-left: 1rem !important;  /* 16px */
+    margin-right: 1rem !important; /* 16px */
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
