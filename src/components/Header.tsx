@@ -92,14 +92,14 @@ export default function Header() {
                     href={link.href}
                     className={`nav-card relative px-4 py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer overflow-hidden block text-center min-w-[120px] text-sm flex items-center justify-center space-x-2 ${
                       isActive 
-                        ? 'text-white' 
+                        ? 'text-pink-600 dark:text-white' 
                         : 'text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                     }`}
                     style={{ 
                       textDecoration: 'none',
                       borderBottom: 'none',
                       background: isActive 
-                        ? 'linear-gradient(135deg, rgba(255, 77, 141, 0.2), rgba(138, 77, 255, 0.2))'
+                        ? 'linear-gradient(135deg, rgba(255, 77, 141, 0.15), rgba(138, 77, 255, 0.15))'
                         : 'transparent'
                     }}
                   >

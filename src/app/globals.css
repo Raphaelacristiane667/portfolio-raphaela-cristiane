@@ -1201,6 +1201,9 @@ nav svg * {
   }
 }
 
+/* Garantir que o conteúdo não fique oculto atrás do header fixo */
+main, .pt-16 { padding-top: 4rem !important; }
+
 /* Habilidades técnicas centralizadas no mobile */
 @media (max-width: 768px) {
   /* Container principal das habilidades */
