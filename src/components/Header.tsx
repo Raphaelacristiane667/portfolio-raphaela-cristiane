@@ -84,28 +84,46 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Menu Desktop - Interativo (pills, gradiente e animações) */}
-          <nav className="hidden md:flex md:flex-row items-center justify-center md:px-6 lg:px-8 md:gap-6 xl:gap-8">
+          {/* Menu Desktop - Design Limpo e Elegante */}
+          <nav className="hidden md:flex items-center justify-center" style={{ gap: '2rem' }}>
             {navLinks.map((link, index) => {
               const IconComponent = link.icon;
               const isActive = isActiveLink(link.href);
               
               return (
-                <div key={link.name} className="relative md:mx-1.5 lg:mx-2">
+                <div key={link.name} className="relative group">
                   <Link
                     href={link.href}
-                    className={`relative inline-flex items-center gap-2 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
-                      isActive
-                        ? 'text-white bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-400/60 shadow-[0_8px_24px_rgba(236,72,153,0.25)]'
-                        : 'text-gray-300 border-pink-400/30 hover:text-white hover:bg-gradient-to-r hover:from-pink-500/10 hover:to-purple-500/10 hover:border-pink-400/50 hover:shadow-[0_6px_18px_rgba(236,72,153,0.25)]'
+                    className={`nav-card relative px-4 py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer overflow-hidden block text-center min-w-[120px] text-sm flex items-center justify-center space-x-2 ${
+                      isActive ? 'text-white' : 'text-gray-300 hover:text-white'
                     }`}
-                    style={{ textDecoration: 'none', borderBottom: 'none' }}
+                    style={{ 
+                      textDecoration: 'none',
+                      borderBottom: 'none',
+                      background: isActive 
+                        ? 'linear-gradient(135deg, rgba(255, 77, 141, 0.2), rgba(138, 77, 255, 0.2))'
+                        : 'transparent'
+                    }}
                   >
-                    <IconComponent size={18} />
-                    <span className="whitespace-nowrap">{link.name}</span>
-                    <span className={`absolute inset-0 rounded-full pointer-events-none transition-opacity duration-300 ${
-                      isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                    }`} />
+                    <IconComponent size={20} style={{ width: '20px', height: '20px', minWidth: '20px', minHeight: '20px', fontSize: '20px' }} />
+                    <span>{link.name}</span>
+                    
+                    {/* Efeito de fundo no hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                    
+                    {/* Borda animada */}
+                    <div className={`absolute inset-0 rounded-lg border transition-all duration-300 ${
+                      isActive 
+                        ? 'border-pink-400/60' 
+                        : 'border-transparent group-hover:border-pink-400/40'
+                    }`}></div>
+                    
+                    {/* Linha decorativa inferior */}
+                    <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
+                      isActive 
+                        ? 'w-3/4 bg-gradient-to-r from-pink-400 to-purple-400' 
+                        : 'w-0 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-3/4'
+                    }`}></div>
                   </Link>
                 </div>
               );
