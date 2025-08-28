@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
+import ModernMenu from "@/components/ModernMenu";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 
@@ -125,7 +125,7 @@ export default function RootLayout({
           Header fixo que permanece visível ao rolar a página
           Contém navegação e informações principais
         */}
-        <Header />
+        <ModernMenu />
         
         {/* 
           Container principal com padding-top para compensar o header fixo
