@@ -24,7 +24,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="py-12 border-t bg-white dark:bg-black border-black/10 dark:border-pink-500/20 text-black dark:text-gray-300">
+    <footer className="py-12 border-t bg-white dark:bg-black border-black/10 dark:border-pink-500/40 text-black dark:text-gray-300">
       <div className="container-custom">
         {/* Layout horizontal com todas as informações lado a lado em uma linha */}
         <div className="flex flex-wrap items-center justify-center gap-12">
@@ -56,7 +56,7 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a
                 href="mailto:raphaelacristiane668@gmail.com"
-                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border text-pink-500 border-pink-500/60 bg-white dark:bg-black"
+                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border text-pink-500 border-pink-500/60 bg-white dark:bg-transparent"
                 title="Enviar email"
               >
                 <Mail size={20} />
@@ -65,7 +65,7 @@ export default function Footer() {
                 href="https://wa.me/5534998828211?text=Olá Raphaela! Gostaria de conversar sobre um projeto."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border text-pink-500 border-pink-500/60 bg-white dark:bg-black"
+                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border text-pink-500 border-pink-500/60 bg-white dark:bg-transparent"
                 title="Conversar no WhatsApp"
               >
                 <MessageCircle size={20} />
@@ -91,7 +91,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 border text-pink-500 border-pink-500/60 bg-white dark:bg-black"
+                  className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 border text-pink-500 border-pink-500/60 bg-white dark:bg-transparent"
                   aria-label={social.label}
                 >
                   <social.icon size={20} />
