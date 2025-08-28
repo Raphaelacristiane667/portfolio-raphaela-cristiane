@@ -63,8 +63,8 @@ export default function FeaturedProjects() {
   };
 
   return (
-    // Seção principal com padding vertical e fundo preto
-    <section id="projects" className="py-20" style={{ backgroundColor: 'var(--color-black)' }}>
+    // Seção principal com padding vertical e fundo que respeita tema
+    <section id="projects" className="py-20 bg-white dark:bg-[var(--color-dark)]">
       <div className="container-custom">
         
         {/* 
@@ -79,13 +79,13 @@ export default function FeaturedProjects() {
           className="text-center mb-16"
         >
           {/* Título principal com cores diferenciadas */}
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span style={{ color: 'var(--color-light-gray)' }}>Projetos em </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+            <span className="text-gray-700 dark:text-gray-300">Projetos em </span>
             <span className="text-gradient">Destaque</span>
           </h2>
           
           {/* Descrição explicativa da seção */}
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(204, 204, 204, 0.8)' }}>
+          <p className="text-lg max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
             Alguns dos meus trabalhos mais recentes e impactantes. 
             Cada projeto representa uma solução única para um desafio específico.
           </p>
@@ -274,25 +274,23 @@ export default function FeaturedProjects() {
                 */}
                 <CardHeader className="pb-4 relative z-10">
                   <CardTitle 
-                    className="text-xl transition-colors duration-300" 
-                    style={{ color: 'var(--color-light-gray)' }}
+                    className="text-xl transition-colors duration-300 text-gray-900 dark:text-gray-200" 
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#FF4DA6';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'var(--color-light-gray)';
+                      e.currentTarget.style.color = '';
                     }}
                   >
                     {project.title}
                   </CardTitle>
                   <CardDescription 
-                    style={{ color: 'rgba(204, 204, 204, 0.8)' }} 
-                    className="leading-relaxed transition-colors duration-300"
+                    className="leading-relaxed transition-colors duration-300 text-gray-700 dark:text-gray-400"
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = 'var(--color-white)';
+                      e.currentTarget.style.color = '';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'rgba(204, 204, 204, 0.8)';
+                      e.currentTarget.style.color = '';
                     }}
                   >
                     {project.description}
