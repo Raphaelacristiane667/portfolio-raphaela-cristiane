@@ -52,7 +52,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h4 className="text-xl font-semibold mb-4 text-purple-500 dark:text-[var(--color-secondary)]">Contato</h4>
+            <h4 className="text-xl font-semibold mb-4 text-pink-500 dark:text-pink-500">Contato</h4>
             <div className="flex space-x-4">
               <a
                 href="mailto:raphaelacristiane668@gmail.com"
@@ -81,7 +81,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h4 className="text-xl font-semibold mb-4 text-purple-500 dark:text-[var(--color-secondary)]">Redes Sociais</h4>
+            <h4 className="text-xl font-semibold mb-4 text-pink-500 dark:text-pink-500">Redes Sociais</h4>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <motion.a
