@@ -85,13 +85,13 @@ export default function Header() {
           </Link>
 
           {/* Menu Desktop - Design Limpo e Elegante */}
-          <nav className="hidden md:flex items-center justify-center md:px-4 lg:px-6 md:gap-8 xl:gap-12">
+          <nav className="hidden md:flex md:flex-row items-center justify-center md:px-6 lg:px-8 md:gap-12 xl:gap-16">
             {navLinks.map((link, index) => {
               const IconComponent = link.icon;
               const isActive = isActiveLink(link.href);
               
               return (
-                <div key={link.name} className="relative group md:mx-3 lg:mx-4 xl:mx-5">
+                <div key={link.name} className="relative group md:mx-4 lg:mx-6 xl:mx-8">
                   <Link
                     href={link.href}
                     className={`nav-card relative px-4 py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer overflow-hidden block text-center min-w-[120px] text-sm flex items-center justify-center space-x-2 ${
