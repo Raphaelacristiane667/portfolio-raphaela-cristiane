@@ -6,7 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import ThemeProvider from "@/components/ThemeProvider";
-import ThemeToggle from "@/components/ThemeToggle";
 
 // Configuração da fonte Inter do Google Fonts
 // Esta fonte é otimizada para leitura em telas e é carregada de forma eficiente
@@ -128,9 +127,6 @@ export default function RootLayout({
           Contém navegação e informações principais
         */}
         <ThemeProvider>
-          <div className="fixed right-3 top-3 z-[60] md:right-4 md:top-4">
-            <ThemeToggle />
-          </div>
           <Header />
         </ThemeProvider>
         

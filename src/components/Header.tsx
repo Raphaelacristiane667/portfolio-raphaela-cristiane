@@ -25,6 +25,7 @@ import {
   Briefcase,
   Phone
 } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   // Estado para controlar abertura/fechamento do menu mobile
@@ -129,20 +130,24 @@ export default function Header() {
               );
             })}
           </nav>
-
-          {/* Botão Mobile - Design Simples */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden relative p-2 rounded-lg transition-all duration-300 hover:scale-105 group"
-            style={{ 
-              background: 'linear-gradient(135deg, #ff4d8d, #8a4dff)',
-              color: 'white'
-            }}
-          >
-            <div className="relative">
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          <div className="flex items-center gap-2">
+            <div className="hidden md:block">
+              <ThemeToggle />
             </div>
-          </button>
+            {/* Botão Mobile - Design Simples */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden relative p-2 rounded-lg transition-all duration-300 hover:scale-105 group"
+              style={{ 
+                background: 'linear-gradient(135deg, #ff4d8d, #8a4dff)',
+                color: 'white'
+              }}
+            >
+              <div className="relative">
+                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Menu Mobile - Design Responsivo */}
