@@ -131,7 +131,7 @@ export default function Header() {
             })}
           </nav>
           <div className="flex items-center gap-2">
-            <div className="hidden md:block">
+            <div className="block mr-1">
               <ThemeToggle />
             </div>
             {/* Botão Mobile - Design Simples */}
