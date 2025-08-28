@@ -380,7 +380,7 @@ a, button, .nav-card, .contact-icon, .card-hover, .btn-primary, input, textarea 
   padding: 12px 20px;
   transition: all 0.3s ease;
   text-decoration: none;
-  color: var(--color-white);
+  color: inherit !important; /* respeita o tema (ajuste para modo claro) */
   display: inline-block;
 }
 
