@@ -57,13 +57,8 @@ export default function Header() {
 
   return (
     <header 
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{
-        background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.85) 100%)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: 'none',
-        boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)'
-      }}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md border-b
+      bg-white/80 border-black/10 dark:bg-[rgba(0,0,0,0.85)] dark:border-pink-500/20 shadow-[0_5px_20px_rgba(0,0,0,0.2)]"
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
@@ -130,7 +125,7 @@ export default function Header() {
               );
             })}
           </nav>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 ml-2 md:ml-4">
             <div className="block mr-1">
               <ThemeToggle />
             </div>
