@@ -19,7 +19,7 @@ const NAV_ITEMS: NavItem[] = [
   { name: "Contato", href: "/contact", icon: Phone },
 ];
 
-export default function ModernMenu(): JSX.Element {
+export default function ModernMenu(): React.ReactElement {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -30,19 +30,20 @@ export default function ModernMenu(): JSX.Element {
 
   return (
     <header
-      className="fixed top-0 inset-x-0 z-50 border-b border-pink-500/20 backdrop-blur-md"
+      className="fixed top-0 inset-x-0 z-50 backdrop-blur-md"
       style={{
         background:
-          "linear-gradient(135deg, rgba(0,0,0,0.92) 0%, rgba(20,20,20,0.88) 100%)",
-        boxShadow: "0 8px 32px rgba(236,72,153,0.15)",
+          "linear-gradient(135deg, rgba(10,10,12,0.80) 0%, rgba(18,18,22,0.78) 100%)",
+        boxShadow: "0 6px 24px rgba(139,92,246,0.18)",
+        borderBottom: "1px solid rgba(236,72,153,0.18)",
       }}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-18 md:h-20">
           {/* Brand */}
           <Link href="/" aria-label="Ir para início" className="select-none">
             <span
-              className="text-xl md:text-2xl font-extrabold tracking-tight bg-clip-text text-transparent"
+              className="text-[18px] md:text-2xl font-extrabold tracking-tight bg-clip-text text-transparent select-none"
               style={{
                 backgroundImage:
                   "linear-gradient(90deg, #ff4da6 0%, #8b5cf6 50%, #ff4da6 100%)",
@@ -53,7 +54,7 @@ export default function ModernMenu(): JSX.Element {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
+          <nav className="hidden md:flex items-center gap-5 lg:gap-7 xl:gap-9 mx-auto">
             {NAV_ITEMS.map(({ name, href, icon: Icon }) => {
               const active = isActive(href);
               return (
@@ -61,24 +62,20 @@ export default function ModernMenu(): JSX.Element {
                   key={name}
                   href={href}
                   className={[
-                    "group inline-flex items-center gap-2 rounded-full",
-                    "px-5 lg:px-6 py-2.5 lg:py-3 text-sm font-medium",
+                    "relative group inline-flex items-center gap-2 rounded-full",
+                    "px-6 lg:px-7 py-2.5 lg:py-3 text-[13px] md:text-sm font-medium",
                     "transition-all duration-300",
-                    "border",
                     active
-                      ? "text-white border-pink-400/60 bg-gradient-to-r from-pink-500/20 to-purple-500/20 shadow-[0_8px_24px_rgba(236,72,153,0.25)]"
-                      : "text-gray-300 border-pink-400/30 hover:text-white hover:bg-gradient-to-r hover:from-pink-500/10 hover:to-purple-500/10 hover:border-pink-400/50 hover:shadow-[0_6px_18px_rgba(236,72,153,0.25)]",
+                      ? "text-white bg-gradient-to-r from-pink-500/25 to-purple-500/25"
+                      : "text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-pink-500/10 hover:to-purple-500/10",
                   ].join(" ")}
                   style={{ textDecoration: "none" }}
                 >
                   <Icon size={18} />
                   <span className="whitespace-nowrap">{name}</span>
                   <span
-                    className="absolute inset-0 rounded-full pointer-events-none opacity-0 group-hover:opacity-100"
-                    style={{
-                      boxShadow:
-                        "0 0 0 1px rgba(236,72,153,0.35), 0 0 22px rgba(236,72,153,0.25), 0 0 44px rgba(139,92,246,0.25)",
-                    }}
+                    className="absolute inset-0 rounded-full pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                    style={{ boxShadow: "0 0 0 1px rgba(236,72,153,0.35), 0 0 16px rgba(236,72,153,0.25)" }}
                   />
                 </Link>
               );
@@ -88,7 +85,7 @@ export default function ModernMenu(): JSX.Element {
           {/* Mobile toggle */}
           <button
             aria-label="Abrir/fechar menu"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-full text-white transition-all duration-300"
+            className="md:hidden inline-flex items-center justify-center p-2.5 rounded-full text-white transition-all duration-300"
             onClick={() => setOpen((v) => !v)}
             style={{
               background:
