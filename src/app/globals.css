@@ -32,15 +32,15 @@ a, a:hover, a:focus, a:visited {
 
 /* Overrides para tema claro: tons mais suaves e texto escuro */
 html:not(.dark) .nav-card {
-  background: rgba(255, 255, 255, 0.88) !important; /* claro e legível */
-  border: 1px solid rgba(236, 72, 153, 0.35) !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+  background: linear-gradient(135deg, rgba(236,72,153,0.06), rgba(168,85,247,0.06), rgba(6,182,212,0.06)) !important;
+  border: 1px solid rgba(236,72,153,0.20) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06) !important;
   color: #111111 !important;
 }
 html:not(.dark) .nav-card:hover {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border-color: rgba(236,72,153,0.45) !important;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.1) !important;
+  background: linear-gradient(135deg, rgba(236,72,153,0.12), rgba(168,85,247,0.12)) !important;
+  border-color: rgba(236,72,153,0.35) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08) !important;
 }
 
 /* Espaçamento horizontal apenas no desktop para os botões do menu */
@@ -119,9 +119,13 @@ html.dark body {
 html:not(.dark) { background-color: #ffffff !important; }
 html.dark { background-color: var(--color-dark) !important; }
 
-/* Main com fundo preto */
-main {
+/* Main com fundo responsivo ao tema */
+html.dark main {
   background-color: var(--color-dark) !important;
+}
+
+html:not(.dark) main {
+  background-color: #ffffff !important;
 }
 
 /* Container personalizado */
@@ -380,7 +384,7 @@ a, button, .nav-card, .contact-icon, .card-hover, .btn-primary, input, textarea 
   padding: 12px 20px;
   transition: all 0.3s ease;
   text-decoration: none;
-  color: inherit !important; /* respeita o tema (ajuste para modo claro) */
+  color: var(--color-white);
   display: inline-block;
 }
 
@@ -413,11 +417,9 @@ a {
 /* CURSOR PERSONALIZADO - ANIMAÇÕES REMOVIDAS PARA EVITAR CONFLITO */
 
 /* Fundos reativos ao tema */
-/* Fundo do wrapper principal acompanha o tema */
 html.dark #__next { background-color: var(--color-dark) !important; }
 html:not(.dark) #__next { background-color: #ffffff !important; }
 
-/* Evitar faixas pretas no tema claro */
 html.dark div[data-nextjs-page] { background-color: var(--color-dark) !important; }
 html:not(.dark) div[data-nextjs-page] { background-color: #ffffff !important; }
 
@@ -1081,14 +1083,14 @@ nav svg * {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) !important;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 10px 25px rgba(255, 77, 166, 0.4);
   z-index: 9999;
   transition: transform 0.2s ease;
-  color: white;
+  color: white !important;
 }
 
 .floating-whatsapp-btn:hover {
@@ -1099,6 +1101,23 @@ nav svg * {
 .floating-whatsapp-btn svg {
   width: 32px;
   height: 32px;
+}
+
+/* Garantir que o botão WhatsApp mantenha seu gradiente em ambos os temas */
+html:not(.dark) .floating-whatsapp-btn,
+html.dark .floating-whatsapp-btn {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) !important;
+  color: white !important;
+  background-color: transparent !important;
+  /* Forçar que o botão não herde o fundo do container pai */
+  isolation: isolate !important;
+}
+
+/* Regra específica para sobrescrever qualquer fundo preto no botão WhatsApp */
+.floating-whatsapp-btn {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) !important;
+  background-color: transparent !important;
+  color: white !important;
 }
 
 /* Botão WhatsApp responsivo no mobile */
@@ -1120,6 +1139,8 @@ nav svg * {
     color: white !important;
     font-weight: 600 !important;
     font-size: 1rem !important;
+    /* Garantir que não seja afetado por regras de tema */
+    background-color: transparent !important;
   }
 
   .floating-whatsapp-btn svg {
@@ -1148,6 +1169,8 @@ nav svg * {
     color: white !important;
     font-weight: 600 !important;
     font-size: 1rem !important;
+    /* Garantir que não seja afetado por regras de tema */
+    background-color: transparent !important;
   }
 
   .floating-whatsapp-btn svg {
@@ -1202,9 +1225,6 @@ nav svg * {
     max-width: 200px !important;
   }
 }
-
-/* Garantir que o conteúdo não fique oculto atrás do header fixo */
-main, .pt-16 { padding-top: 4rem !important; }
 
 /* Habilidades técnicas centralizadas no mobile */
 @media (max-width: 768px) {
