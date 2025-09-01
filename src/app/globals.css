@@ -32,15 +32,27 @@ a, a:hover, a:focus, a:visited {
 
 /* Overrides para tema claro: tons mais suaves e texto escuro */
 html:not(.dark) .nav-card {
-  background: linear-gradient(135deg, rgba(236,72,153,0.06), rgba(168,85,247,0.06), rgba(6,182,212,0.06)) !important;
-  border: 1px solid rgba(236,72,153,0.20) !important;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06) !important;
-  color: #111111 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(236,72,153,0.30) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08) !important;
+  color: #333333 !important;
+  backdrop-filter: blur(10px) !important;
 }
 html:not(.dark) .nav-card:hover {
-  background: linear-gradient(135deg, rgba(236,72,153,0.12), rgba(168,85,247,0.12)) !important;
-  border-color: rgba(236,72,153,0.35) !important;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(236,72,153,0.50) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12) !important;
+  color: #000000 !important;
+}
+
+/* Garantir que ícones do menu tenham cor correta no tema claro */
+html:not(.dark) .nav-card svg {
+  color: #333333 !important;
+  fill: #333333 !important;
+}
+html:not(.dark) .nav-card:hover svg {
+  color: #000000 !important;
+  fill: #000000 !important;
 }
 
 /* Espaçamento horizontal apenas no desktop para os botões do menu */
@@ -376,24 +388,8 @@ a, button, .nav-card, .contact-icon, .card-hover, .btn-primary, input, textarea 
   animation: pulse-slow 2s ease-in-out infinite;
 }
 
-/* Estilos para menu em formato de cards */
-.nav-card {
-  background: rgba(255, 77, 166, 0.1);
-  border: 1px solid rgba(255, 77, 166, 0.3);
-  border-radius: 12px;
-  padding: 12px 20px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: var(--color-white);
-  display: inline-block;
-}
-
-.nav-card:hover {
-  background: rgba(255, 77, 166, 0.2);
-  border-color: rgba(255, 77, 166, 0.5);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 77, 166, 0.3);
-}
+/* Estilos para menu em formato de cards - REMOVIDO PARA EVITAR CONFLITO */
+/* As regras específicas de tema estão definidas acima */
 
 /* Estilos para ícones de contato */
 .contact-icon {
