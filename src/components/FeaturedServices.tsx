@@ -17,42 +17,44 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Laptop, Palette, Zap } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage } from '@/components/LanguageProvider';
 import { useEffect, useState, useRef } from 'react';
 
 export default function FeaturedServices() {
+  const { t, language } = useLanguage();
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const services = [
     {
       icon: Laptop,
-      title: "Desenvolvimento Web",
-      description: "Sites e aplicações responsivas, rápidos e com visual moderno. Desenvolvimento completo desde o design até a implementação.",
+      title: language === 'en' ? 'Web Development' : 'Desenvolvimento Web',
+      description: language === 'en' ? 'Responsive, fast and modern websites and applications. Complete development from design to implementation.' : 'Sites e aplicações responsivas, rápidos e com visual moderno. Desenvolvimento completo desde o design até a implementação.',
       features: [
-        "Sites responsivos e otimizados para SEO",
-        "Aplicações web com React/Next.js",
-        "Integração com APIs e bancos de dados"
+        language === 'en' ? 'Responsive and SEO-optimized websites' : 'Sites responsivos e otimizados para SEO',
+        language === 'en' ? 'Web apps with React/Next.js' : 'Aplicações web com React/Next.js',
+        language === 'en' ? 'API and database integration' : 'Integração com APIs e bancos de dados'
       ],
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: Palette,
-      title: "Design UI/UX",
-      description: "Interfaces intuitivas e agradáveis para melhor experiência do usuário. Design focado na usabilidade e estética moderna.",
+      title: language === 'en' ? 'UI/UX Design' : 'Design UI/UX',
+      description: language === 'en' ? 'Intuitive and pleasant interfaces focused on usability and modern aesthetics.' : 'Interfaces intuitivas e agradáveis para melhor experiência do usuário. Design focado na usabilidade e estética moderna.',
       features: [
-        "Design de interfaces responsivas",
-        "Prototipagem e wireframes",
-        "Testes de usabilidade"
+        language === 'en' ? 'Responsive interface design' : 'Design de interfaces responsivas',
+        language === 'en' ? 'Prototyping and wireframes' : 'Prototipagem e wireframes',
+        language === 'en' ? 'Usability testing' : 'Testes de usabilidade'
       ],
       color: "from-pink-500 to-purple-500"
     },
     {
       icon: Zap,
-      title: "Integrações e Automação",
-      description: "Conexão de sistemas e automações para otimizar seu negócio. Integrações com APIs populares e automação de processos.",
+      title: language === 'en' ? 'Integrations & Automation' : 'Integrações e Automação',
+      description: language === 'en' ? 'Connect systems and automate processes to optimize your business. Integrations with popular APIs and workflow automation.' : 'Conexão de sistemas e automações para otimizar seu negócio. Integrações com APIs populares e automação de processos.',
       features: [
-        "Integração com APIs (WhatsApp, Stripe, etc.)",
-        "Automação de workflows",
-        "Sincronização de dados"
+        language === 'en' ? 'API integrations (WhatsApp, Stripe, etc.)' : 'Integração com APIs (WhatsApp, Stripe, etc.)',
+        language === 'en' ? 'Workflow automation' : 'Automação de workflows',
+        language === 'en' ? 'Data synchronization' : 'Sincronização de dados'
       ],
       color: "from-orange-500 to-yellow-500"
     }
@@ -102,10 +104,10 @@ export default function FeaturedServices() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient text-gray-900 dark:text-white">
-            Serviços em Destaque
+            {t('services.heading')}
           </h2>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed text-gray-700 dark:text-gray-300">
-            Soluções digitais completas para transformar suas ideias em realidade
+            {t('services.subtitle')}
           </p>
         </motion.div>
 
@@ -266,7 +268,7 @@ export default function FeaturedServices() {
                               e.currentTarget.style.opacity = '1';
                             }}
                           >
-                            Ver Detalhes
+                            {t('services.button.details')}
                           </button>
                         </Link>
                       </div>
@@ -311,7 +313,7 @@ export default function FeaturedServices() {
                 e.currentTarget.style.opacity = '1';
               }}
             >
-              Ver Todos os Serviços
+              {t('services.button.all')}
             </button>
           </Link>
         </motion.div>

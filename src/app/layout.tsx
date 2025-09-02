@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import ThemeProvider from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/components/LanguageProvider";
 
 // Configuração da fonte Inter do Google Fonts
 // Esta fonte é otimizada para leitura em telas e é carregada de forma eficiente
@@ -127,22 +128,22 @@ export default function RootLayout({
           Contém navegação e informações principais
         */}
         <ThemeProvider>
-          <Header />
+          <LanguageProvider>
+            <Header />
+            {/* 
+              Container principal com padding-top para compensar o header fixo
+              Aqui é renderizado o conteúdo específico de cada página
+            */}
+            <div className="pt-16">
+              {children}
+            </div>
+            {/* 
+              Footer com informações de contato e links importantes
+              Sempre visível no final da página
+            */}
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
-        
-        {/* 
-          Container principal com padding-top para compensar o header fixo
-          Aqui é renderizado o conteúdo específico de cada página
-        */}
-        <div className="pt-16">
-          {children}
-        </div>
-        
-        {/* 
-          Footer com informações de contato e links importantes
-          Sempre visível no final da página
-        */}
-        <Footer />
         
         {/* 
           Cursor personalizado com efeito de brilho

@@ -16,11 +16,13 @@
 // Importações necessárias para animações e navegação
 import { motion } from 'framer-motion'; // Biblioteca para animações suaves
 import Link from 'next/link'; // Componente de navegação do Next.js
+import { useLanguage } from '@/components/LanguageProvider';
 
 
 // Componente Hero - Seção principal de abertura do portfólio
 // Esta é a primeira seção que os visitantes veem, deve ser impactante
 export default function Hero() {
+  const { t } = useLanguage();
   return (
     // Seção principal com altura mínima da tela, centralizada e com overflow oculto
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden" style={{ backgroundColor: 'var(--color-dark)' }}>
@@ -62,9 +64,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
         >
-          <span style={{ color: 'var(--color-light-gray)' }}>Transformando ideias em</span>
+          <span style={{ color: 'var(--color-light-gray)' }}>{t('hero.headline.line1')}</span>
           <br />
-          <span className="text-gradient">experiências digitais</span>
+          <span className="text-gradient">{t('hero.headline.line2')}</span>
         </motion.h1>
 
         {/* 
@@ -78,10 +80,9 @@ export default function Hero() {
           className="text-lg md:text-xl max-w-4xl mx-auto mb-12 leading-relaxed"
           style={{ color: 'var(--color-light-gray)' }}
         >
-                          Sou <span style={{ color: 'var(--color-primary)', fontWeight: '600' }}>Raphaela Cristiane</span>, desenvolvedora e criadora de soluções digitais 
-          que combinam design moderno e funcionalidade. Transformo suas ideias em realidade.
+          {t('hero.subtitle')}
           <br />
-                     <span style={{ color: 'var(--color-accent)', fontSize: '1rem', opacity: '0.9' }}>🚀 Desenvolvemos soluções digitais únicas para que o seu negócio seja inesquecível.</span>
+          <span style={{ color: 'var(--color-accent)', fontSize: '1rem', opacity: '0.9' }}>{t('hero.subtitle.tag')}</span>
         </motion.p>
 
         {/* 
@@ -122,7 +123,7 @@ export default function Hero() {
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              Ver Projetos
+              {t('hero.cta.projects')}
             </button>
           </Link>
           
@@ -134,7 +135,7 @@ export default function Hero() {
             <button 
               className="btn-secondary text-lg px-8 py-4"
             >
-              Entre em Contato
+              {t('hero.cta.contact')}
             </button>
           </Link>
         </motion.div>

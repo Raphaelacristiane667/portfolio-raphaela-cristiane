@@ -16,10 +16,12 @@
 // Importações necessárias para animações e otimização de imagens
 import { motion } from 'framer-motion'; // Biblioteca para animações suaves
 import Image from 'next/image'; // Componente otimizado de imagem do Next.js
+import { useLanguage } from '@/components/LanguageProvider';
 
 // Componente About - Seção "Sobre Mim" do portfólio
 // Apresenta informações pessoais, habilidades e estatísticas profissionais
 export default function About() {
+  const { t } = useLanguage();
   // Lista de habilidades técnicas organizadas por categoria
   // Estas são as principais tecnologias que Raphaela domina
   const skills = [
@@ -126,8 +128,8 @@ export default function About() {
           >
             {/* Título da seção com cores diferenciadas */}
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              <span style={{ color: 'var(--color-light-gray)' }}>Sobre </span>
-              <span className="text-gradient">Mim</span>
+              <span style={{ color: 'var(--color-light-gray)' }}>{t('about.title').split(' ')[0]} </span>
+              <span className="text-gradient">{t('about.title').split(' ').slice(1).join(' ')}</span>
             </h2>
 
             {/* 
@@ -137,28 +139,17 @@ export default function About() {
             <div className="space-y-6 mb-12">
               {/* Primeiro parágrafo: Apresentação e paixão */}
               <p className="text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-              Sou Raphaela Cristiane, desenvolvedora web full stack dedicada a criar soluções
-               digitais completas e exclusivas. Do frontend moderno e intuitivo ao backend sólido
-               e escalável, passando por APIs e automações inteligentes,
-               eu cuido de cada detalhe para transformar ideias em resultados reais.
+                {t('about.p1')}
               </p>
               
               {/* Segundo parágrafo: Missão e compromisso */}
               <p className="text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-              Acredito que um projeto digital precisa ser mais do que um simples sistema:
-               ele deve ser estratégico, único e feito sob medida para impulsionar o seu negócio.
-                Cada interface que desenvolvo é pensada para ser clara e envolvente, enquanto cada
-                 automação e integração no backend é construída para trazer eficiência, praticidade
-                  e crescimento.
+                {t('about.p2')}
               </p>
               
               {/* Terceiro parágrafo: Experiência e localização */}
               <p className="text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
-              Minha missão é entregar muito mais do que tecnologia — é criar uma solução digital
-               que faça o seu negócio se destacar, crescer e ser lembrado. Estou em constante
-                evolução, aplicando as melhores práticas e ferramentas modernas para garantir
-                 projetos que não só funcionam, mas fazem a diferença no dia a dia de quem os
-                  utiliza.
+                {t('about.p3')}
               </p>
             </div>
 
@@ -168,7 +159,7 @@ export default function About() {
             */}
             <div className="flex-1">
               <h3 className="text-xl font-semibold mb-8 text-gradient">
-                Habilidades Técnicas
+                {t('about.skills')}
               </h3>
               
               {/* Container vertical: frontend em cima, backend embaixo */}
@@ -176,7 +167,7 @@ export default function About() {
                 {/* Categoria: Frontend */}
                 <div>
                   <h4 className="text-base font-medium text-gray-300 mb-6 uppercase tracking-wider border-b border-pink-500/30 pb-3">
-                    Frontend
+                    {t('about.frontend')}
                   </h4>
                   <div className="flex flex-wrap gap-1">
                     {["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"].map((skill, index) => (
@@ -210,7 +201,7 @@ export default function About() {
                 {/* Categoria: Backend & Ferramentas */}
                 <div>
                   <h4 className="text-base font-medium text-gray-300 mb-6 uppercase tracking-wider border-b border-purple-500/30 pb-3">
-                    Backend & Ferramentas
+                    {t('about.backend')}
                   </h4>
                   <div className="flex flex-wrap gap-1">
                     {["Firebase", "Node.js", "Git", "Figma", "PHP", "Python", "MySQL"].map((skill, index) => (

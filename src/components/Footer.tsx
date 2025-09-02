@@ -14,9 +14,11 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/components/LanguageProvider';
 import { Instagram, Linkedin, Github, Mail, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
+  const { t } = useLanguage();
   const socialLinks = [
     { icon: Instagram, href: "https://www.instagram.com/raphaela_cristianee/", label: "Instagram" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/raphaela-cristiane-21b806266", label: "LinkedIn" },
@@ -37,10 +39,9 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h3 className="text-2xl font-bold text-gradient mb-4">Raphaela Cristiane</h3>
+            <h3 className="text-2xl font-bold text-gradient mb-4">{t('footer.about.title')}</h3>
             <p className="leading-relaxed max-w-xs text-gray-700 dark:text-gray-300">
-              🚀 Criando soluções digitais completas. 
-              Desenvolvedora apaixonada por criar experiências digitais únicas.
+              {t('footer.about.text')}
             </p>
           </motion.div>
 
@@ -52,7 +53,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h4 className="text-xl font-semibold mb-4 text-pink-500 dark:text-pink-500">Contato</h4>
+            <h4 className="text-xl font-semibold mb-4 text-pink-500 dark:text-pink-500">{t('footer.contact')}</h4>
             <div className="flex space-x-4">
               <a
                 href="mailto:raphaelacristiane668@gmail.com"
@@ -81,7 +82,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h4 className="text-xl font-semibold mb-4 text-pink-500 dark:text-pink-500">Redes Sociais</h4>
+            <h4 className="text-xl font-semibold mb-4 text-pink-500 dark:text-pink-500">{t('footer.social')}</h4>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -120,7 +121,7 @@ export default function Footer() {
           className="text-center"
         >
           <p style={{ color: 'var(--color-light-gray)' }}>
-            © 2025 <span style={{ color: 'var(--color-primary)', fontWeight: '600' }}>Raphaela Cristiane</span> - Todos os direitos reservados
+            {t('footer.copyright')}
           </p>
         </motion.div>
       </div>

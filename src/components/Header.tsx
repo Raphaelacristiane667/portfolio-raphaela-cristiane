@@ -13,41 +13,37 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  Home, 
-  FolderOpen, 
-  Menu, 
-  X,
-  User,
-  Briefcase,
-  Phone
-} from 'lucide-react';
+import { Globe, Menu as MenuIcon, X as CloseIcon } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import { useLanguage } from './LanguageProvider';
+
+// Configuração dos itens de navegação
+const NAV_ITEMS = [
+  { href: '/', label: 'Início' },
+  { href: '/#about', label: 'Sobre' },
+  { href: '/#services', label: 'Serviços' },
+  { href: '/#projects', label: 'Projetos' },
+  { href: '/contact', label: 'Contato' },
+];
+
+// Configuração dos itens em inglês
+const NAV_ITEMS_EN = [
+  { href: '/', label: 'Home' },
+  { href: '/#about', label: 'About' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/contact', label: 'Contact' },
+];
 
 export default function Header() {
-  // Estado para controlar abertura/fechamento do menu mobile
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  // Hook para obter o caminho atual da rota
+  const { language, setLanguage } = useLanguage();
   const pathname = usePathname();
 
-  // Array de links de navegação com ícones
-  const navLinks = [
-    { name: 'Início', href: '/', icon: Home },
-    { name: 'Sobre', href: '/#about', icon: User },
-    { name: 'Serviços', href: '/#services', icon: Briefcase },
-    { name: 'Projetos', href: '/#projects', icon: FolderOpen },
-    { name: 'Contato', href: '/contact', icon: Phone }
-  ];
-
-  /**
-   * Verifica se um link está ativo baseado no pathname atual
-   * @param href - URL do link
-   * @returns boolean indicando se o link está ativo
-   */
+  // Verificar se um link está ativo
   const isActiveLink = (href: string): boolean => {
     if (href === '/') {
       return pathname === '/';
@@ -55,19 +51,33 @@ export default function Header() {
     return pathname.includes(href.replace('/#', ''));
   };
 
+  const changeLanguage = (lang: 'pt' | 'en') => {
+    setLanguage(lang);
+  };
+
+  const toggleLanguage = () => {
+    changeLanguage(language === 'en' ? 'pt' : 'en');
+  };
+
+  // Usar os itens corretos baseado no idioma
+  const currentNavItems = language === 'en' ? NAV_ITEMS_EN : NAV_ITEMS;
+
   return (
-    <header 
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md border-b shadow-sm bg-white border-black/10 dark:bg-[rgba(0,0,0,0.85)] dark:border-pink-500/20"
-      style={{ background: 'rgba(255,255,255,0.95)' }}
-    >
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-16">
-          
-          {/* Logo Raphaela - Design Elegante e Compacto */}
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <div className="relative group">
-              <div 
-                className="relative text-2xl font-bold px-4 py-2 rounded-xl border border-pink-300/30 group-hover:border-pink-300/60 transition-all duration-300 cursor-pointer hover:scale-105"
+    <>
+      {/* Header Desktop - Baseado na imagem de referência */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 dark:bg-black/95 backdrop-blur-md border-b border-gray-800/50">
+        <div className="container-custom">
+          <nav className="flex items-center justify-between h-16">
+            
+            {/* Logo/Marca - Esquerda */}
+            <Link 
+              href="/" 
+              className="flex items-center space-x-3 group"
+              aria-label="Ir para página inicial"
+            >
+              {/* Nome da marca */}
+              <span 
+                className="text-white font-semibold text-xl"
                 style={{
                   background: 'linear-gradient(135deg, #ff4d8d, #8a4dff)',
                   WebkitBackgroundClip: 'text',
@@ -76,136 +86,94 @@ export default function Header() {
                 }}
               >
                 Raphaela Cristiane
-              </div>
-            </div>
-          </Link>
+              </span>
+            </Link>
 
-          {/* Menu Desktop - Design Limpo e Elegante */}
-          <nav className="hidden md:flex items-center justify-center" style={{ gap: '2rem' }}>
-            {navLinks.map((link, index) => {
-              const IconComponent = link.icon;
-              const isActive = isActiveLink(link.href);
-              
-              return (
-                <div key={link.name} className="relative group">
-                  <Link
-                    href={link.href}
-                    className={`nav-card relative px-4 py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer overflow-hidden block text-center min-w-[120px] text-sm flex items-center justify-center space-x-2 ${
-                      isActive 
-                        ? 'text-pink-600 dark:text-white' 
-                        : 'text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
-                    }`}
-                    style={{ 
-                      textDecoration: 'none',
-                      borderBottom: 'none',
-                      background: isActive 
-                        ? 'linear-gradient(135deg, rgba(255, 77, 141, 0.15), rgba(138, 77, 255, 0.15))'
-                        : 'transparent'
-                    }}
-                  >
-                    <IconComponent size={20} style={{ width: '20px', height: '20px', minWidth: '20px', minHeight: '20px', fontSize: '20px' }} />
-                    <span>{link.name}</span>
-                    
-                    {/* Efeito de fundo no hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                    
-                    {/* Borda animada */}
-                    <div className={`absolute inset-0 rounded-lg border transition-all duration-300 ${
-                      isActive 
-                        ? 'border-pink-400/60' 
-                        : 'border-transparent group-hover:border-pink-400/40'
-                    }`}></div>
-                    
-                    {/* Linha decorativa inferior */}
-                    <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
-                      isActive 
-                        ? 'w-3/4 bg-gradient-to-r from-pink-400 to-purple-400' 
-                        : 'w-0 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-3/4'
-                    }`}></div>
-                  </Link>
-                </div>
-              );
-            })}
-          </nav>
-          <div className="flex items-center gap-2 ml-2 md:ml-4">
-            <div className="block mr-1">
-              <ThemeToggle />
-            </div>
-            {/* Botão Mobile - Design Simples */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden relative p-2 rounded-lg transition-all duration-300 hover:scale-105 group"
-              style={{ 
-                background: 'linear-gradient(135deg, #ff4d8d, #8a4dff)',
-                color: 'white'
-              }}
-            >
-              <div className="relative">
-                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* Menu Mobile - Design Responsivo */}
-        {isMobileMenuOpen && (
-          <div 
-            className="md:hidden border-t py-0.5 mx-0 mb-0.5 rounded-sm"
-            style={{ 
-              borderColor: 'rgba(255, 77, 141, 0.3)',
-              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.9) 100%)',
-              backdropFilter: 'blur(15px)',
-              boxShadow: '0 8px 25px rgba(0, 0, 0, 0.4)'
-            }}
-          >
-            <nav className="flex flex-col items-center space-y-0">
-              {navLinks.map((link, index) => {
-                const IconComponent = link.icon;
-                const isActive = isActiveLink(link.href);
+            {/* Links de Navegação - Centro (desktop) */}
+            <div className="hidden md:flex items-center space-x-20 mx-6">
+              {currentNavItems.map((item, index) => {
+                const isActive = isActiveLink(item.href);
                 
                 return (
-                  <div key={link.name} className="relative group w-full">
-                    <Link
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={`nav-card block font-medium px-0.5 py-0.5 rounded-sm transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden text-center w-full text-xs flex items-center justify-center space-x-0.5 ${
-                        isActive ? 'text-white' : 'text-gray-300 hover:text-white'
-                      }`}
-                      style={{ 
-                        textDecoration: 'none',
-                        borderBottom: 'none',
-                        background: isActive 
-                          ? 'linear-gradient(135deg, rgba(255, 77, 141, 0.3), rgba(138, 77, 255, 0.3))'
-                          : 'transparent'
-                      }}
-                    >
-                      <IconComponent size={10} />
-                      <span className="whitespace-nowrap">{link.name}</span>
-                      
-                      {/* Efeito de fundo no hover */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-sm opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                      
-                      {/* Borda animada */}
-                      <div className={`absolute inset-0 rounded-sm border transition-all duration-300 ${
-                        isActive 
-                          ? 'border-pink-400/80' 
-                          : 'border-transparent group-hover:border-pink-400/60'
-                      }`}></div>
-                      
-                      {/* Linha decorativa inferior */}
-                      <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
-                        isActive 
-                          ? 'w-3/4 bg-gradient-to-r from-pink-400 to-purple-400' 
-                          : 'w-0 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-3/4'
-                      }`}></div>
-                    </Link>
-                  </div>
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`
+                      relative transition-all duration-300 font-medium px-6 py-3 rounded-lg
+                      text-black dark:text-white hover:text-pink-600 dark:hover:text-pink-400
+                      hover:bg-black/5 dark:hover:bg-gray-800/30 active:bg-black/10 dark:active:bg-gray-800/50 active:scale-95
+                      hover:scale-105 transform
+                      ${isActive ? 'text-pink-600 dark:text-pink-400' : ''}
+                    `}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    <span className="relative z-10">{item.label}</span>
+                    
+                    {/* Efeito de underline no hover */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-pink-500 dark:bg-pink-400 transform scale-x-0 transition-transform duration-300 origin-left hover:scale-x-100"></div>
+                    
+                    {/* Efeito de brilho no hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-400/10 to-purple-400/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                  </Link>
                 );
               })}
+            </div>
+
+            {/* Botões de Utilidade - Direita */}
+            <div className="flex items-center space-x-4 ml-auto">
+              {/* Idioma: visível no desktop e no mobile quando o menu está fechado */}
+              <button
+                onClick={toggleLanguage}
+                className={`nav-icon-btn ${isMobileMenuOpen ? 'hidden' : 'inline-flex'} md:inline-flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 border text-black dark:text-white`}
+                aria-label="Alterar idioma"
+              >
+                <Globe size={20} />
+              </button>
+              {/* Tema: visível no desktop e no mobile quando o menu está fechado */}
+              <span className={`${isMobileMenuOpen ? 'hidden' : 'inline-flex'} md:inline-flex`}>
+                <ThemeToggle />
+              </span>
+              {/* Menu / Fechar: hambúrguer vira X quando aberto */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="nav-icon-btn inline-flex md:hidden items-center justify-center w-10 h-10 rounded-full transition-all duration-200 border text-black dark:text-white"
+                aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
+              >
+                {isMobileMenuOpen ? (
+                  <CloseIcon size={20} />
+                ) : (
+                  <MenuIcon size={20} />
+                )}
+              </button>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      {isMobileMenuOpen && (
+        <div id="mobile-menu" className="fixed inset-0 z-[60] md:hidden">
+          <div className="absolute inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-2xl" onClick={() => setIsMobileMenuOpen(false)} />
+          <div className="relative z-10 h-full w-full flex flex-col">
+            <nav className="flex-1 flex items-center justify-center overflow-y-auto">
+              <ul className="w-full max-w-xs px-6 space-y-4 text-center">
+                {currentNavItems.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block w-full text-center text-lg font-medium py-3 rounded-xl transition-all duration-300 active:scale-95 text-black dark:text-white hover:text-pink-600 dark:hover:text-pink-400 hover:bg-black/5 dark:hover:bg-gray-800/30 active:bg-black/10 dark:active:bg-gray-800/50"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </nav>
           </div>
-        )}
-      </div>
-    </header>
+        </div>
+      )}
+    </>
   );
 }

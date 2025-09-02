@@ -17,6 +17,7 @@
 // Importações necessárias para animações, navegação e componentes UI
 import { motion } from 'framer-motion'; // Biblioteca para animações suaves
 import Link from 'next/link'; // Componente de navegação do Next.js
+import { useLanguage } from '@/components/LanguageProvider';
 
 import { useState } from 'react'; // Hook para gerenciar estado
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'; // Componentes de card
@@ -28,9 +29,41 @@ import VideoModal from './VideoModal'; // Componente do modal de vídeo
 // Componente FeaturedProjects - Exibe projetos em destaque do portfólio
 // Mostra os melhores trabalhos para impressionar visitantes e clientes potenciais
 export default function FeaturedProjects() {
+  const { t, language } = useLanguage();
   // Obtém apenas os projetos marcados como "featured" (em destaque)
   // Estes são os projetos mais impressionantes e representativos
-  const featuredProjects = getFeaturedProjects();
+  const featuredProjectsBase = getFeaturedProjects();
+
+  // Traduções específicas dos projetos em destaque (por id)
+  const featuredProjects = featuredProjectsBase.map((project) => {
+    if (language !== 'en') return project;
+    switch (project.id) {
+      case 1:
+        return {
+          ...project,
+          title: 'Barbershop Scheduling System',
+          description: 'Responsive web app for online booking with WhatsApp integration and automatic notifications. Complete system for managing clients and schedules.',
+          category: 'Web System',
+          technologies: project.technologies.map((t) => t === 'Tailwind CSS' ? 'Tailwind CSS' : t)
+        };
+      case 2:
+        return {
+          ...project,
+          title: 'Personal Portfolio',
+          description: 'My professional website showcasing projects, skills and services. Modern design with smooth animations and SEO optimized.',
+          category: 'Portfolio'
+        };
+      case 3:
+        return {
+          ...project,
+          title: 'OpenSource-API Backend',
+          description: 'Complete REST API for managing users, posts and comments with JWT auth, roles system and SQLite DB. Academic project with solid architecture and full documentation.',
+          category: 'Backend API'
+        };
+      default:
+        return project;
+    }
+  });
 
   // Estado para controlar o modal de vídeo
   const [videoModal, setVideoModal] = useState<{
@@ -80,14 +113,13 @@ export default function FeaturedProjects() {
         >
           {/* Título principal com cores diferenciadas */}
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            <span className="text-gray-700 dark:text-gray-300">Projetos em </span>
-            <span className="text-gradient">Destaque</span>
+            <span className="text-gray-700 dark:text-gray-300">{t('projects.heading.part1')}</span>
+            <span className="text-gradient">{t('projects.heading.part2')}</span>
           </h2>
           
           {/* Descrição explicativa da seção */}
           <p className="text-lg max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
-            Alguns dos meus trabalhos mais recentes e impactantes. 
-            Cada projeto representa uma solução única para um desafio específico.
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
@@ -221,7 +253,7 @@ export default function FeaturedProjects() {
                         onClick={() => openVideoModal(project.video!, project.title, project.description)}
                       >
                         <Play size={16} className="mr-2" />
-                        Ver Vídeo
+                        {t('projects.btn.video')}
                       </button>
                     ) : project.link ? (
                       <a 
@@ -243,7 +275,7 @@ export default function FeaturedProjects() {
                         className="hover:opacity-80 transition-opacity"
                       >
                         <ExternalLink size={16} className="mr-2" />
-                        Ver Projeto
+                        {t('projects.btn.project')}
                       </a>
                     ) : (
                       <button
@@ -262,7 +294,7 @@ export default function FeaturedProjects() {
                         disabled
                       >
                         <Eye size={16} className="mr-2" />
-                        Em Desenvolvimento
+                        {t('projects.btn.dev')}
                       </button>
                     )}
                   </div>
@@ -393,7 +425,7 @@ export default function FeaturedProjects() {
                             e.currentTarget.style.opacity = '1';
                           }}
                         >
-                          Ver Detalhes
+                          {t('projects.btn.details')}
                         </button>
                       </Link>
                     ) : (
@@ -422,7 +454,7 @@ export default function FeaturedProjects() {
                           e.currentTarget.style.opacity = '1';
                         }}
                       >
-                        Ver Detalhes
+                        {t('projects.btn.details')}
                       </button>
                     )}
                   </div>
@@ -468,7 +500,7 @@ export default function FeaturedProjects() {
                 e.currentTarget.style.opacity = '1';
               }}
             >
-              Ver Todos os Projetos
+              {t('projects.btn.all')}
             </button>
           </Link>
         </motion.div>
