@@ -1,6 +1,9 @@
 /* Importação da fonte Inter do Google Fonts - DEVE vir primeiro */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* Importação do CSS do BB-8 Toggle */
+@import './bb8-toggle.css';
+
 /* Reset CSS básico */
 * {
   margin: 0;
@@ -1416,4 +1419,7 @@ html.dark .floating-whatsapp-btn {
 
 
 
+
+
+/* Removidas regras de força do #mobile-menu que estavam conflitando com a sidebar */
 
