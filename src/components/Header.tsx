@@ -88,7 +88,7 @@ export default function Header() {
             >
               {/* Nome da marca */}
               <span 
-                className="text-white font-semibold text-lg md:text-2xl"
+                className="text-white font-semibold text-lg md:text-2xl lg:text-3xl header-logo"
                 style={{
                   background: 'linear-gradient(135deg, #ff4d8d, #8a4dff)',
                   WebkitBackgroundClip: 'text',
@@ -126,7 +126,12 @@ export default function Header() {
             </div>
 
             {/* Botões de Utilidade - Direita */}
-            <div className="flex items-center space-x-3 md:space-x-6 ml-auto">
+            <div 
+              className="flex items-center ml-auto header-utility-buttons space-x-2 md:space-x-6"
+              style={{ 
+                gap: '8px'
+              }}
+            >
               {/* BB-8 Theme Toggle: visível no desktop e no mobile quando o menu está fechado */}
               {!isMobileMenuOpen && (
                 <span className="inline-flex">
@@ -146,7 +151,7 @@ export default function Header() {
               {/* Menu / Fechar: hambúrguer vira X quando aberto - agora também no desktop */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="nav-icon-btn inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full transition-all duration-200 border text-black dark:text-white ml-2 md:ml-4"
+                className="nav-icon-btn inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full transition-all duration-200 border text-black dark:text-white"
                 aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"

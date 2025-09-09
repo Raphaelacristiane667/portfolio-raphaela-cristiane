@@ -353,8 +353,18 @@ export default function FeaturedServices() {
         }
         
         .carousel-item:hover .card {
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 77, 141, 0.3) !important;
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 77, 141, 0.3) !important;
           transform: scale(1.02);
+        }
+        
+        /* Sombra adaptativa para tema claro */
+        html:not(.dark) .carousel-item:hover .card {
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 77, 141, 0.2) !important;
+        }
+        
+        /* Sombra mais intensa para tema escuro */
+        html.dark .carousel-item:hover .card {
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 77, 141, 0.4) !important;
         }
         
         .service-button {
