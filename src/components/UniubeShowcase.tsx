@@ -72,14 +72,11 @@ export default function UniubeShowcase() {
 
           <article className="uniube-story">
             <p>{t("uniube.p1")}</p>
-            <p>{t("uniube.p2")}</p>
-            <p>{t("uniube.p3")}</p>
 
             <blockquote className="uniube-quote">
               <p>{t("uniube.quote")}</p>
             </blockquote>
 
-            <p>{t("uniube.team")}</p>
             <p className="uniube-closing">{t("uniube.closing")}</p>
           </article>
         </motion.div>

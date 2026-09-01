@@ -19,51 +19,46 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   // Título padrão e template para todas as páginas
   title: {
-      default: "Raphaela Cristiane - Desenvolvedora Web", // Título padrão
-  template: "%s | Raphaela Cristiane - Desenvolvedora Web" // Template para outras páginas
+    default: "Raphaela Cristiane | Desenvolvedora Full Stack",
+    template: "%s | Raphaela Cristiane",
   },
-  
-  // Descrição geral do site para motores de busca
-      description: "Portfólio de Raphaela Cristiane, desenvolvedora web especializada em Next.js, React e design moderno.",
-  
-  // Palavras-chave para melhorar o ranking nos motores de busca
-  keywords: ["desenvolvedora web", "Next.js", "React", "TypeScript", "Tailwind CSS", "portfólio"],
-  
-  // Informações sobre o autor e criador do site
-      authors: [{ name: "Raphaela Cristiane" }],
-    creator: "Raphaela Cristiane",
-    publisher: "Raphaela Cristiane",
-  
-  // Desabilita a detecção automática de informações de contato
+  description:
+    "Portfólio de Raphaela Cristiane, desenvolvedora Full Stack especializada em sistemas web, APIs, integrações e soluções digitais.",
+  keywords: [
+    "desenvolvedora full stack",
+    "sistemas corporativos",
+    "APIs",
+    "integrações",
+    "Next.js",
+    "React",
+    "TypeScript",
+  ],
+  authors: [{ name: "Raphaela Cristiane" }],
+  creator: "Raphaela Cristiane",
+  publisher: "Raphaela Cristiane",
   formatDetection: {
-    email: false,      // Não detecta emails automaticamente
-    address: false,    // Não detecta endereços automaticamente
-    telephone: false,  // Não detecta telefones automaticamente
+    email: false,
+    address: false,
+    telephone: false,
   },
-  
-  // URL base para todos os metadados
-  metadataBase: new URL("https://raphaela-portfolio.com"),
-  
-  // URL canônica para evitar conteúdo duplicado
+  metadataBase: new URL("https://portfolio-raphaela-cristiane.vercel.app"),
   alternates: {
     canonical: "/",
   },
-  
-  // Configurações para compartilhamento em redes sociais (Open Graph)
   openGraph: {
-    type: "website",           // Tipo de conteúdo
-    locale: "pt_BR",          // Idioma (Português do Brasil)
-    url: "https://raphaela-portfolio.com", // URL do site
-    title: "Raphaela Cristiane - Desenvolvedora Web", // Título para compartilhamento
-    description: "Transformando ideias em experiências digitais", // Descrição para compartilhamento
-    siteName: "Raphaela Portfolio", // Nome do site
+    type: "website",
+    locale: "pt_BR",
+    url: "https://portfolio-raphaela-cristiane.vercel.app",
+    title: "Raphaela Cristiane | Desenvolvedora Full Stack",
+    description:
+      "Sistemas web, APIs, integrações e soluções digitais em produção.",
+    siteName: "Raphaela Cristiane — Portfólio",
   },
-  
-  // Configurações específicas para Twitter/X
   twitter: {
-    card: "summary_large_image", // Tipo de card do Twitter
-    title: "Raphaela Cristiane - Desenvolvedora Web",
-    description: "Transformando ideias em experiências digitais",
+    card: "summary_large_image",
+    title: "Raphaela Cristiane | Desenvolvedora Full Stack",
+    description:
+      "Sistemas web, APIs, integrações e soluções digitais.",
   },
   
   // Configurações para robôs de busca

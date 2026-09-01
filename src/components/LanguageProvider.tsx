@@ -14,36 +14,58 @@ const translations: TranslationDictionary = {
   "nav.contact": { pt: "Contato", en: "Contact" },
 
   "hero.headline.line1": { pt: "Transformando ideias em", en: "Transforming ideas into" },
-  "hero.headline.line2": { pt: "experiências digitais", en: "digital experiences" },
+  "hero.headline.line2": { pt: "soluções digitais", en: "digital solutions" },
   "hero.subtitle": {
-    pt: "Sou Raphaela Cristiane, desenvolvedora e criadora de soluções digitais que combinam design moderno e funcionalidade. Transformo suas ideias em realidade.",
-    en: "I'm Raphaela Cristiane, a developer who creates digital solutions combining modern design and functionality. I turn your ideas into reality."
+    pt: "Desenvolvo sistemas web, APIs e soluções digitais que transformam processos complexos em experiências simples, eficientes e escaláveis.",
+    en: "I build web systems, APIs, and digital solutions that turn complex processes into simple, efficient, and scalable experiences."
   },
-  "hero.cta.projects": { pt: "Ver Projetos", en: "View Projects" },
-  "hero.cta.contact": { pt: "Entre em Contato", en: "Get in Touch" },
+  "hero.cta.projects": { pt: "Ver projetos", en: "View projects" },
+  "hero.cta.contact": { pt: "Entre em contato", en: "Get in touch" },
   "hero.subtitle.tag": {
-    pt: "🚀 Desenvolvemos soluções digitais únicas para que o seu negócio seja inesquecível.",
-    en: "🚀 We build unique digital solutions so your business is unforgettable."
+    pt: "Full Stack · Sistemas Corporativos · APIs · Integrações · Automação",
+    en: "Full Stack · Corporate Systems · APIs · Integrations · Automation"
   },
 
+  "impact.title": {
+    pt: "Construindo soluções que geram impacto",
+    en: "Building solutions that create impact"
+  },
+  "impact.item1.value": { pt: "5", en: "5" },
+  "impact.item1.label": { pt: "Concessionárias Way Brasil", en: "Way Brasil concessions" },
+  "impact.item2.value": { pt: "4+", en: "4+" },
+  "impact.item2.label": { pt: "Sistemas corporativos", en: "Corporate systems" },
+  "impact.item3.value": { pt: "Full Stack", en: "Full Stack" },
+  "impact.item3.label": { pt: "Web · Backend · APIs", en: "Web · Backend · APIs" },
+  "impact.item4.value": { pt: "Integrações", en: "Integrations" },
+  "impact.item4.label": { pt: "ERPs · APIs · Automação", en: "ERPs · APIs · Automation" },
+
   // About
-  "about.title": { pt: "Sobre Mim", en: "About Me" },
+  "about.title": { pt: "Sobre ", en: "About " },
+  "about.titleHighlight": { pt: "mim", en: "me" },
+  "about.highlight": {
+    pt: "Desenvolvedora Full Stack apaixonada por transformar problemas em soluções digitais.",
+    en: "Full Stack Developer passionate about turning problems into digital solutions."
+  },
   "about.p1": {
-    pt: "Sou Raphaela Cristiane, desenvolvedora web full stack dedicada a criar soluções digitais completas e exclusivas. Do frontend moderno e intuitivo ao backend sólido e escalável, passando por APIs e automações inteligentes, eu cuido de cada detalhe para transformar ideias em resultados reais.",
-    en: "I'm Raphaela Cristiane, a full‑stack web developer dedicated to building complete and unique digital solutions. From modern, intuitive frontends to solid, scalable backends, APIs and smart automations, I take care of every detail to turn ideas into real results."
+    pt: "Minha trajetória combina formação em Sistemas de Informação, desenvolvimento de aplicações e experiência prática na construção de sistemas reais.",
+    en: "My journey combines a degree in Information Systems, application development, and hands-on experience building real-world systems."
   },
-  "about.p2": {
-    pt: "Acredito que um projeto digital precisa ser mais do que um simples sistema: ele deve ser estratégico, único e feito sob medida para impulsionar o seu negócio. Cada interface que desenvolvo é pensada para ser clara e envolvente, enquanto cada automação e integração no backend é construída para trazer eficiência, praticidade e crescimento.",
-    en: "I believe a digital project must be more than just a system: it should be strategic, unique and tailored to boost your business. Every interface I build is designed to be clear and engaging, while each backend automation and integration brings efficiency, practicality and growth."
+  "about.journey.title": { pt: "Da sala de aula ao mercado", en: "From classroom to market" },
+  "about.journey.text": {
+    pt: "A formação acadêmica me deu a base para transformar conhecimento em soluções aplicadas — sistemas corporativos, integrações e projetos em produção.",
+    en: "Academic training gave me the foundation to turn knowledge into applied solutions — corporate systems, integrations, and production projects."
   },
-  "about.p3": {
-    pt: "Minha missão é entregar muito mais do que tecnologia — é criar uma solução digital que faça o seu negócio se destacar, crescer e ser lembrado. Estou em constante evolução, aplicando as melhores práticas e ferramentas modernas para garantir projetos que não só funcionam, mas fazem a diferença no dia a dia de quem os utiliza.",
-    en: "My mission is to deliver much more than technology — to create a digital solution that makes your business stand out, grow and be remembered. I'm constantly evolving, applying best practices and modern tools to ensure projects that not only work, but truly make a difference."
+  "about.skills.section": { pt: "Stack técnico", en: "Tech stack" },
+  "about.skills.sectionDesc": {
+    pt: "Tecnologias que uso no dia a dia para construir sistemas em produção.",
+    en: "Technologies I use daily to build production systems.",
   },
-  "about.skills": { pt: "Habilidades Técnicas", en: "Technical Skills" },
-  "about.frontend": { pt: "Frontend", en: "Frontend" },
-  "about.backend": { pt: "Backend", en: "Backend" },
-  "about.tools": { pt: "Ferramentas", en: "Tools" },
+  "about.skills.primary": { pt: "Core", en: "Core" },
+  "about.skills.secondary": { pt: "Também trabalho com", en: "Also work with" },
+  "about.skills.backend": { pt: "Backend", en: "Backend" },
+  "about.skills.mobile": { pt: "Mobile & Web", en: "Mobile & Web" },
+  "about.skills.data": { pt: "Dados", en: "Data" },
+  "about.skills.tools": { pt: "Ferramentas", en: "Tools" },
 
   // Way Brasil showcase
   "way.badge": { pt: "Grupo Way Brasil · 5 concessionárias", en: "Way Brasil Group · 5 concessions" },
@@ -74,10 +96,10 @@ const translations: TranslationDictionary = {
   // Uniube — apresentação acadêmica
   "uniube.badge": { pt: "Uniube · Formação & compartilhamento", en: "Uniube · Education & sharing" },
   "uniube.title.part1": { pt: "Da sala de aula ", en: "From the classroom " },
-  "uniube.title.part2": { pt: "ao palco", en: "to the stage" },
+  "uniube.title.part2": { pt: "ao mercado", en: "to the market" },
   "uniube.subtitle": {
-    pt: "Retornar à universidade para compartilhar minha trajetória com futuros profissionais de TI conecta formação acadêmica e prática no mercado.",
-    en: "Returning to university to share my journey with future IT professionals bridges academic training and real-world practice."
+    pt: "Minha formação em Sistemas de Informação me deu a base para transformar conhecimento acadêmico em soluções aplicadas a problemas reais.",
+    en: "My Information Systems degree gave me the foundation to turn academic knowledge into solutions for real-world problems."
   },
   "uniube.tags.label": { pt: "Contexto da apresentação", en: "Presentation context" },
   "uniube.tag.degree": { pt: "Sistemas de Informação", en: "Information Systems" },
@@ -124,9 +146,23 @@ const translations: TranslationDictionary = {
   "services.button.all": { pt: "Ver Todos os Serviços", en: "View All Services" },
 
   // Featured Projects
-  "projects.heading.part1": { pt: "Projetos em ", en: "Featured " },
-  "projects.heading.part2": { pt: "Destaque", en: "Projects" },
-  "projects.subtitle": { pt: "Alguns dos meus trabalhos mais recentes e impactantes. Cada projeto representa uma solução única para um desafio específico.", en: "Some of my most recent and impactful work. Each project represents a unique solution to a specific challenge." },
+  "projects.heading.part1": { pt: "Cases em ", en: "Featured " },
+  "projects.heading.part2": { pt: "Destaque", en: "Cases" },
+  "projects.subtitle": {
+    pt: "Projetos reais com problema, solução e resultado — sistemas corporativos, integrações e aplicações em produção.",
+    en: "Real projects with problem, solution, and outcome — corporate systems, integrations, and production applications."
+  },
+  "projects.case.problem": { pt: "Problema", en: "Problem" },
+  "projects.case.solution": { pt: "Solução", en: "Solution" },
+  "projects.case.result": { pt: "Resultado", en: "Result" },
+  "projects.btn.case": { pt: "Ver case", en: "View case" },
+  "projects.filter.label": { pt: "Filtrar projetos", en: "Filter projects" },
+  "projects.filter.all": { pt: "Todos", en: "All" },
+  "projects.filter.systems": { pt: "Sistemas", en: "Systems" },
+  "projects.filter.web": { pt: "Web", en: "Web" },
+  "projects.filter.mobile": { pt: "Mobile", en: "Mobile" },
+  "projects.filter.integrations": { pt: "Integrações", en: "Integrations" },
+  "projects.filter.ai": { pt: "IA", en: "AI" },
   "projects.btn.video": { pt: "Ver Vídeo", en: "Watch Video" },
   "projects.btn.project": { pt: "Ver Projeto", en: "View Project" },
   "projects.btn.dev": { pt: "Em Desenvolvimento", en: "In Development" },
@@ -138,14 +174,17 @@ const translations: TranslationDictionary = {
   // Projects page header
   "projects.page.title.part1": { pt: "Meus ", en: "My " },
   "projects.page.title.part2": { pt: "Projetos", en: "Projects" },
-  "projects.page.subtitle": { pt: "Uma coleção dos meus melhores trabalhos em desenvolvimento web, mobile e backend. Cada projeto representa uma solução única para um desafio específico.", en: "A collection of my best work in web, mobile and backend development. Each project represents a unique solution to a specific challenge." },
+  "projects.page.subtitle": {
+    pt: "Cases profissionais em sistemas web, mobile, backend e integrações — cada um documentado com contexto, solução e resultado.",
+    en: "Professional cases in web, mobile, backend, and integrations — each documented with context, solution, and outcome."
+  },
 
   // Contact page
   "contact.title.part1": { pt: "Entre em ", en: "Get in " },
   "contact.title.part2": { pt: "Contato", en: "Touch" },
   "contact.subtitle": {
-    pt: "Tem um projeto, dúvida ou oportunidade? Escolha o canal que preferir — respondo o mais breve possível.",
-    en: "Have a project, question, or opportunity? Choose your preferred channel — I'll reply as soon as possible."
+    pt: "Tem um sistema para desenvolver, integrar ou melhorar? Vamos conversar sobre sua ideia e transformar o problema em uma solução digital.",
+    en: "Have a system to build, integrate, or improve? Let's talk about your idea and turn the problem into a digital solution."
   },
   "contact.channels.title": { pt: "Canais de contato", en: "Contact channels" },
   "contact.whatsapp.title": { pt: "WhatsApp", en: "WhatsApp" },
@@ -167,11 +206,13 @@ const translations: TranslationDictionary = {
   "contact.info.availability": { pt: "Disponível para projetos e parcerias", en: "Available for projects and partnerships" },
 
   // Footer
-  "footer.about.title": { pt: "Raphaela Cristiane", en: "Raphaela Cristiane" },
-  "footer.about.text": { pt: "🚀 Criando soluções digitais completas. Desenvolvedora apaixonada por criar experiências digitais únicas.", en: "🚀 Building complete digital solutions. Developer passionate about crafting unique digital experiences." },
+  "footer.role": { pt: "Full Stack Developer", en: "Full Stack Developer" },
+  "footer.tagline": { pt: "Sistemas Web · APIs · Integrações", en: "Web Systems · APIs · Integrations" },
+  "footer.nav": { pt: "Navegação", en: "Navigation" },
+  "footer.connect": { pt: "Conectar", en: "Connect" },
   "footer.contact": { pt: "Contato", en: "Contact" },
-  "footer.social": { pt: "Redes Sociais", en: "Social" },
-  "footer.copyright": { pt: "© 2025 Raphaela Cristiane - Todos os direitos reservados", en: "© 2025 Raphaela Cristiane - All rights reserved" }
+  "footer.social": { pt: "Redes", en: "Social" },
+  "footer.rights": { pt: "Todos os direitos reservados", en: "All rights reserved" },
 };
 
 type LanguageContextValue = {

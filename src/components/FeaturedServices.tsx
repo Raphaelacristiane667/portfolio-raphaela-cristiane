@@ -74,8 +74,8 @@ export default function FeaturedServices() {
     },
   ];
 
-  // Duplicar os serviços para criar o efeito infinito circular
-  const duplicatedServices = [...services, ...services, ...services, ...services, ...services, ...services];
+  // Duplicar apenas 2x para loop infinito (não 6x)
+  const duplicatedServices = [...services, ...services];
 
   useEffect(() => {
     if (!carouselRef.current) return;

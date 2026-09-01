@@ -3,8 +3,9 @@ import FeaturedProjects from '@/components/FeaturedProjects';
 import ProjectsHeader from '@/components/ProjectsHeader';
 
 export const metadata: Metadata = {
-  title: 'Projetos - Raphaela Cristiane',
-  description: 'Portfólio completo de projetos desenvolvidos por Raphaela Cristiane. Veja todos os trabalhos em desenvolvimento web, mobile e backend.',
+  title: 'Projetos',
+  description:
+    'Cases profissionais de Raphaela Cristiane — sistemas corporativos, integrações, mobile e APIs documentados com problema, solução e resultado.',
 };
 
 export default function ProjectsPage() {

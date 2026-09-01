@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Globe, Menu, X } from "lucide-react";
 import BB8ThemeToggle from "./BB8ThemeToggle";
 import { useLanguage } from "./LanguageProvider";
-import { NAV_ITEMS, type NavItem } from "@/config/navigation";
+import { NAV_ITEMS, Z_INDEX, type NavItem } from "@/config/navigation";
 
 const DESKTOP_BP = 1024;
 
@@ -134,14 +134,14 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setLanguage(language === "en" ? "pt" : "en")}
-              className="nav-icon-btn inline-flex h-10 w-10 items-center justify-center rounded-full border"
+              className="nav-icon-btn"
               aria-label={language === "en" ? "Switch language" : "Alterar idioma"}
             >
               <Globe size={18} />
             </button>
             <button
               type="button"
-              className="site-header__menu-btn nav-icon-btn inline-flex h-10 w-10 items-center justify-center rounded-full border"
+              className="site-header__menu-btn nav-icon-btn"
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav-panel"
@@ -153,7 +153,16 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Painel mobile — CSS controla visibilidade por breakpoint */}
+      {isMobile && menuOpen && (
+        <button
+          type="button"
+          className="site-header__overlay"
+          aria-label="Fechar menu"
+          onClick={closeMenu}
+          style={{ zIndex: Z_INDEX.mobileOverlay }}
+        />
+      )}
+
       <div
         id="mobile-nav-panel"
         className={["site-header__mobile-panel", menuOpen ? "is-open" : ""].join(" ")}
@@ -161,41 +170,42 @@ export default function Header() {
         aria-modal={menuOpen}
         aria-hidden={!menuOpen}
         aria-label={language === "en" ? "Mobile menu" : "Menu mobile"}
+        style={{ zIndex: Z_INDEX.mobileDrawer }}
       >
-          <div className="site-header__mobile-top">
-            <span className="site-header__brand">Raphaela Cristiane</span>
-            <button
-              type="button"
-              onClick={closeMenu}
-              className="nav-icon-btn inline-flex h-10 w-10 items-center justify-center rounded-full border"
-              aria-label="Fechar menu"
-            >
-              <X size={18} />
-            </button>
-          </div>
-          <nav
-            className="site-header__mobile-nav"
-            aria-label={language === "en" ? "Mobile navigation" : "Navegação mobile"}
+        <div className="site-header__mobile-top">
+          <span className="site-header__brand">Raphaela Cristiane</span>
+          <button
+            type="button"
+            onClick={closeMenu}
+            className="nav-icon-btn"
+            aria-label="Fechar menu"
           >
-            {NAV_ITEMS.map((item) => {
-              const active = isNavActive(item, pathname, hash);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  prefetch={false}
-                  onClick={(e) => onNavClick(e, item, closeMenu)}
-                  className={[
-                    "site-header__mobile-link",
-                    active ? "site-header__mobile-link--active" : "",
-                  ].join(" ")}
-                >
-                  {t(item.labelKey)}
-                </Link>
-              );
-            })}
-          </nav>
+            <X size={18} />
+          </button>
         </div>
+        <nav
+          className="site-header__mobile-nav"
+          aria-label={language === "en" ? "Mobile navigation" : "Navegação mobile"}
+        >
+          {NAV_ITEMS.map((item) => {
+            const active = isNavActive(item, pathname, hash);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                prefetch={false}
+                onClick={(e) => onNavClick(e, item, closeMenu)}
+                className={[
+                  "site-header__mobile-link",
+                  active ? "site-header__mobile-link--active" : "",
+                ].join(" ")}
+              >
+                {t(item.labelKey)}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
     </>
   );
 }
