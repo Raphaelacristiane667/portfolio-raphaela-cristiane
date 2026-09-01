@@ -23,47 +23,96 @@ import { useState } from 'react'; // Hook para gerenciar estado
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'; // Componentes de card
 
 import { ExternalLink, Play, Eye } from 'lucide-react'; // Ícones de link externo, play e olho
-import { getFeaturedProjects } from '@/data/projects'; // Função para obter projetos em destaque
+import { getFeaturedProjects, getAllProjects, type Project } from '@/data/projects'; // Função para obter projetos
 import VideoModal from './VideoModal'; // Componente do modal de vídeo
 
 // Componente FeaturedProjects - Exibe projetos em destaque do portfólio
 // Mostra os melhores trabalhos para impressionar visitantes e clientes potenciais
-export default function FeaturedProjects() {
+export default function FeaturedProjects({ showAll = false }: { showAll?: boolean }) {
   const { t, language } = useLanguage();
-  // Obtém apenas os projetos marcados como "featured" (em destaque)
-  // Estes são os projetos mais impressionantes e representativos
-  const featuredProjectsBase = getFeaturedProjects();
+  const featuredProjectsBase = showAll ? getAllProjects() : getFeaturedProjects();
 
-  // Traduções específicas dos projetos em destaque (por id)
-  const featuredProjects = featuredProjectsBase.map((project) => {
+  const localizeProject = (project: Project): Project => {
     if (language !== 'en') return project;
-    switch (project.id) {
-      case 1:
+    switch (project.slug) {
+      case 'cronograma-way-brasil':
+        return {
+          ...project,
+          title: 'Cronograma Way Brasil',
+          description:
+            'Corporate platform for schedules, projects, tasks, Gantt/Kanban, multi-unit RBAC, audit, DSP (RQ-154), and PaperSign integration. Technologies: React 19, Vite, JavaScript, Node.js, Express, Microsoft SQL Server, SAML, IIS, and GitHub Actions.',
+          category: 'Corporate System',
+        };
+      case 'papersign':
+        return {
+          ...project,
+          title: 'PaperSign',
+          description:
+            'Approvals, digital signatures (PlugSign/ICP-Brasil), and document workflows integrated with TOTVS RM and the Cronograma ecosystem. Technologies: Next.js, React 19, TypeScript, Tailwind CSS, ASP.NET Core, C#, Microsoft SQL Server, and react-pdf.',
+          category: 'Corporate System',
+        };
+      case 'indicadores-corporativos':
+        return {
+          ...project,
+          title: 'Corporate Indicators System',
+          description:
+            'KPI platform with categories, targets, value entry, PDF/Excel reports, RBAC, and scheduled email alerts. Node.js + React stack and production version with ScriptCase/PHP on IIS. Technologies: React, Vite, Material UI, Node.js, Express, SQL Server, ScriptCase, and PHP.',
+          category: 'Corporate System',
+        };
+      case 'rq08-treinamentos':
+        return {
+          ...project,
+          title: 'RQ08 — Training Management',
+          description:
+            'Corporate training management system for Way Brasil, frontend aligned with PaperSign/Cronograma design system. Technologies: React 19, TypeScript, Vite, Tailwind CSS, Node.js, Express, Prisma, Microsoft SQL Server, and Recharts.',
+          category: 'In Development',
+        };
+      case 'app-cigam':
+        return {
+          ...project,
+          title: 'App Cigam — Sales Force',
+          description:
+            'Mobile sales force app with offline catalog, order queue, and sync when connected, integrated with Cigam ERP. Technologies: Expo, React Native, SQLite, Node.js, Express, PostgreSQL, and JWT.',
+          category: 'In Development',
+        };
+      case 'geeky':
+        return {
+          ...project,
+          title: 'Geeky — Geek Ecosystem',
+          description:
+            'Gamified, geo-referenced geek platform with JWT auth, public profile, interests, and followers. Technologies: Java, Spring Boot, PostgreSQL, React, TypeScript, Vite, Tailwind CSS, and Leaflet.',
+          category: 'In Development',
+        };
+      case 'barbearia':
         return {
           ...project,
           title: 'Barbershop Scheduling System',
-          description: 'Responsive web app for online booking with WhatsApp integration and automatic notifications. Complete system for managing clients and schedules.',
+          description:
+            'Responsive web app for online booking with WhatsApp integration and automatic notifications. Technologies: Next.js, Firebase, Tailwind CSS, n8n, and TypeScript.',
           category: 'Web System',
-          technologies: project.technologies.map((t) => t === 'Tailwind CSS' ? 'Tailwind CSS' : t)
         };
-      case 2:
+      case 'portfolio':
         return {
           ...project,
           title: 'Personal Portfolio',
-          description: 'My professional website showcasing projects, skills and services. Modern design with smooth animations and SEO optimized.',
-          category: 'Portfolio'
+          description:
+            'This site: professional portfolio with Next.js, animations, PT/EN i18n, and focus on real projects. Technologies: Next.js, Tailwind CSS, Framer Motion, and TypeScript.',
+          category: 'Portfolio',
         };
-      case 3:
+      case 'opensource-api':
         return {
           ...project,
           title: 'OpenSource-API Backend',
-          description: 'Complete REST API for managing users, posts and comments with JWT auth, roles system and SQLite DB. Academic project with solid architecture and full documentation.',
-          category: 'Backend API'
+          description:
+            'REST API for users, posts, and comments with JWT auth, roles, and SQLite. Technologies: Node.js, Express, SQLite, JWT, and REST API.',
+          category: 'Backend API',
         };
       default:
         return project;
     }
-  });
+  };
+
+  const featuredProjects = featuredProjectsBase.map(localizeProject);
 
   // Estado para controlar o modal de vídeo
   const [videoModal, setVideoModal] = useState<{
@@ -97,7 +146,7 @@ export default function FeaturedProjects() {
 
   return (
     // Seção principal com padding vertical e fundo que respeita tema
-    <section id="projects" className="py-20 bg-white dark:bg-[var(--color-dark)]">
+    <section id="projects" className="section-anchor py-20 bg-white dark:bg-[var(--color-dark)]">
       <div className="container-custom">
         
         {/* 
@@ -225,6 +274,17 @@ export default function FeaturedProjects() {
                         console.log('✅ Imagem carregada com sucesso:', project.image);
                       }}
                     />
+                    {project.videoStatus === 'pending' && (
+                      <div
+                        className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/75"
+                        aria-label={t('projects.video.reserved')}
+                      >
+                        <Play size={32} className="text-[var(--color-primary)] opacity-80" />
+                        <span className="rounded-full border border-[var(--color-primary)]/40 bg-black/60 px-3 py-1 text-xs font-medium text-[var(--color-primary)]">
+                          {t('projects.video.reserved')}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   
                   {/* 
@@ -236,7 +296,7 @@ export default function FeaturedProjects() {
                       Botão para ver vídeo (se disponível) ou projeto
                       Mostra ícone diferente baseado no tipo de conteúdo
                     */}
-                    {project.hasVideo ? (
+                    {project.hasVideo && project.videoStatus !== 'pending' ? (
                       <button
                         style={{ 
                           backgroundColor: 'var(--color-primary)',
@@ -255,6 +315,19 @@ export default function FeaturedProjects() {
                         <Play size={16} className="mr-2" />
                         {t('projects.btn.video')}
                       </button>
+                    ) : project.hasVideo && project.videoStatus === 'pending' ? (
+                      <span
+                        style={{
+                          padding: '8px 16px',
+                          borderRadius: '6px',
+                          color: 'var(--color-primary)',
+                          border: '1px solid rgba(255, 77, 166, 0.4)',
+                          fontSize: '14px',
+                          backgroundColor: 'rgba(0,0,0,0.5)',
+                        }}
+                      >
+                        {t('projects.btn.videoSoon')}
+                      </span>
                     ) : project.link ? (
                       <a 
                         href={project.link} 
@@ -399,7 +472,7 @@ export default function FeaturedProjects() {
 
                   {/* Botão Ver Detalhes */}
                   <div className="mt-6 text-center">
-                    {project.title === "Portfólio Pessoal" ? (
+                    {project.slug === 'portfolio' ? (
                       <Link href="/">
                         <button 
                           className="project-button"
@@ -428,7 +501,7 @@ export default function FeaturedProjects() {
                           {t('projects.btn.details')}
                         </button>
                       </Link>
-                    ) : (
+                    ) : project.hasVideo && project.videoStatus !== 'pending' ? (
                       <button
                         onClick={() => openVideoModal(project.video!, project.title, project.description)}
                         className="project-button"
@@ -456,7 +529,27 @@ export default function FeaturedProjects() {
                       >
                         {t('projects.btn.details')}
                       </button>
-                    )}
+                    ) : project.hasVideo && project.videoStatus === 'pending' ? (
+                      <button
+                        disabled
+                        className="project-button"
+                        style={{
+                          background: 'transparent',
+                          border: '1px solid rgba(255, 77, 166, 0.4)',
+                          borderRadius: '8px',
+                          padding: '15px 50px',
+                          color: 'var(--color-primary)',
+                          fontWeight: 'bold',
+                          fontSize: '16px',
+                          cursor: 'not-allowed',
+                          opacity: 0.7,
+                          display: 'inline-block',
+                          width: 'auto',
+                        }}
+                      >
+                        {t('projects.btn.videoSoon')}
+                      </button>
+                    ) : null}
                   </div>
                 </CardContent>
               </Card>

@@ -14,7 +14,7 @@ export default function ProjectsPage() {
       <ProjectsHeader />
 
       {/* Lista de todos os projetos */}
-      <FeaturedProjects />
+      <FeaturedProjects showAll />
     </div>
   );
 }

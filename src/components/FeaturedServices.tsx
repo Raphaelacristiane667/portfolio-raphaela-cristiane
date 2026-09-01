@@ -94,7 +94,7 @@ export default function FeaturedServices() {
   }, []);
 
   return (
-    <section className="featured-services-section py-20 overflow-hidden bg-white dark:bg-[var(--color-dark)]">
+    <section id="services" className="section-anchor featured-services-section py-20 overflow-hidden bg-white dark:bg-[var(--color-dark)]">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

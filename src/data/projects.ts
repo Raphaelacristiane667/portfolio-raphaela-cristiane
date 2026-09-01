@@ -1,134 +1,235 @@
 /**
- * projects.ts - Dados dos projetos em destaque
- * 
- * Este arquivo contém as informações dos projetos:
- * - Portfólio Pessoal
- * - Barbearia Online
- * - Open Source
- * - Cada projeto com detalhes completos
- * 
- * @author Raphaela Cristiane
- * @version 1.0.0
+ * projects.ts - Fonte única de dados dos projetos
  */
 
-// Interface TypeScript que define a estrutura de um projeto
-// Garante consistência nos dados e facilita o desenvolvimento
+export type VideoStatus = "available" | "pending";
+
 export interface Project {
-  id: number;           // Identificador único do projeto
-  title: string;        // Título/nome do projeto
-  description: string;  // Descrição detalhada do projeto
-  technologies: string[]; // Array com as tecnologias utilizadas
-  image: string;        // Caminho da imagem do projeto
-  video?: string;       // URL do vídeo demonstrativo (opcional)
-  link?: string;        // URL para acessar o projeto (opcional)
-  featured: boolean;    // Se o projeto deve aparecer em destaque
-  category: string;     // Categoria do projeto (ex: Sistema Web, E-commerce)
-  hasVideo: boolean;    // Se o projeto tem vídeo demonstrativo
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  image: string;
+  /** Caminho reservado ou URL do vídeo demonstrativo */
+  video?: string;
+  /** pending = área reservada, aguardando gravação/upload */
+  videoStatus?: VideoStatus;
+  link?: string;
+  featured: boolean;
+  category: string;
+  hasVideo: boolean;
+  professional?: boolean;
 }
 
-// Array com todos os projetos do portfólio
-// Cada projeto segue a interface Project definida acima
 export const projects: Project[] = [
   {
-    id: 1,
-    title: "Sistema de Agendamento para Barbearia",
-    description: "Aplicação web responsiva para agendamento online com integração ao WhatsApp e notificações automáticas. Sistema completo de gestão de clientes e horários.",
-    technologies: ["Next.js", "Firebase", "Tailwind CSS", "n8n", "TypeScript"],
-    image: "/projects/barberia.jpg",
-    video: "/videos/barbearia.mp4", // Vídeo local da barbearia
-    link: undefined, // Site não publicado
-    featured: true,     // Projeto em destaque na página inicial
-    category: "Sistema Web",
-    hasVideo: true
+    id: 7,
+    slug: "cronograma-way-brasil",
+    title: "Cronograma Way Brasil",
+    description:
+      "Plataforma corporativa de cronogramas, projetos, pendências, Gantt/Kanban, RBAC multi-unidade, auditoria, DSP (RQ-154) e integração PaperSign. Tecnologias: React 19, Vite, JavaScript, Node.js, Express, Microsoft SQL Server, SAML, IIS e GitHub Actions.",
+    technologies: [
+      "React 19",
+      "Vite",
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "Microsoft SQL Server",
+      "SAML",
+      "IIS",
+      "GitHub Actions",
+    ],
+    image: "/projects/cronograma.png",
+    video: "/videos/cronograma-way-brasil.mp4",
+    videoStatus: "pending",
+    featured: true,
+    category: "Sistema Corporativo",
+    hasVideo: true,
+    professional: true,
   },
   {
-    id: 2,
-    title: "Portfólio Pessoal",
-    description: "Meu próprio site profissional, destacando meus projetos, habilidades e serviços. Design moderno com animações suaves e otimizado para SEO.",
-    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
+    id: 8,
+    slug: "papersign",
+    title: "PaperSign",
+    description:
+      "Sistema de aprovações, assinaturas digitais (PlugSign/ICP-Brasil) e fluxos documentais integrado ao TOTVS RM e ao ecossistema Cronograma, multi-unidade Way Brasil. Tecnologias: Next.js, React 19, TypeScript, Tailwind CSS, ASP.NET Core, C#, Microsoft SQL Server e react-pdf.",
+    technologies: [
+      "Next.js",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "ASP.NET Core",
+      "C#",
+      "Microsoft SQL Server",
+      "TanStack Table",
+      "react-pdf",
+    ],
+    image: "/projects/papersign.png",
+    video: "/videos/papersign.mp4",
+    videoStatus: "pending",
+    featured: true,
+    category: "Sistema Corporativo",
+    hasVideo: true,
+    professional: true,
+  },
+  {
+    id: 12,
+    slug: "indicadores-corporativos",
+    title: "Sistema de Indicadores Corporativos",
+    description:
+      "Plataforma de KPIs com categorias, metas, lançamento de valores, relatórios PDF/Excel, RBAC e disparos agendados por e-mail. Stack Node.js + React e versão em produção com ScriptCase/PHP no IIS. Tecnologias: React, Vite, Material UI, Node.js, Express, SQL Server, ScriptCase e PHP.",
+    technologies: [
+      "React",
+      "Vite",
+      "Material UI",
+      "Recharts",
+      "Node.js",
+      "Express",
+      "Microsoft SQL Server",
+      "ScriptCase",
+      "PHP",
+      "JWT",
+    ],
     image: "/projects/portfolio.jpg",
-    video: "/videos/portfolio.mp4", // Vídeo local do portfólio
-    link: "#",          // Link interno (não abre em nova aba)
-    featured: true,     // Projeto em destaque na página inicial
-    category: "Portfólio",
-    hasVideo: true
+    featured: true,
+    category: "Sistema Corporativo",
+    hasVideo: false,
+    professional: true,
+  },
+  {
+    id: 11,
+    slug: "rq08-treinamentos",
+    title: "RQ08 — Gestão de Treinamentos",
+    description:
+      "Sistema corporativo de gestão de treinamentos Way Brasil, com frontend alinhado ao design system PaperSign/Cronograma. Tecnologias: React 19, TypeScript, Vite, Tailwind CSS, Node.js, Express, Prisma, Microsoft SQL Server e Recharts.",
+    technologies: [
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "Prisma",
+      "Microsoft SQL Server",
+      "Recharts",
+    ],
+    image: "/projects/rq08.png",
+    featured: true,
+    category: "Em Desenvolvimento",
+    hasVideo: false,
+    professional: true,
+  },
+  {
+    id: 9,
+    slug: "app-cigam",
+    title: "App Cigam — Força de Vendas",
+    description:
+      "App mobile de força de vendas com catálogo offline, fila de pedidos e sincronização quando há conexão, integrado ao ERP Cigam. Tecnologias: Expo, React Native, SQLite, Node.js, Express, PostgreSQL e JWT.",
+    technologies: [
+      "Expo",
+      "React Native",
+      "SQLite",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "JWT",
+    ],
+    image: "/projects/cigam.png",
+    featured: true,
+    category: "Em Desenvolvimento",
+    hasVideo: false,
+    professional: true,
+  },
+  {
+    id: 10,
+    slug: "geeky",
+    title: "Geeky — Ecossistema Geek",
+    description:
+      "Plataforma geek gamificada e georreferenciada com autenticação JWT, perfil público, interesses e seguidores. Tecnologias: Java, Spring Boot, PostgreSQL, React, TypeScript, Vite, Tailwind CSS e Leaflet.",
+    technologies: [
+      "Java",
+      "Spring Boot",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Leaflet",
+      "PWA",
+    ],
+    image: "/projects/geeky.png",
+    featured: true,
+    category: "Em Desenvolvimento",
+    hasVideo: false,
+  },
+  {
+    id: 1,
+    slug: "barbearia",
+    title: "Sistema de Agendamento para Barbearia",
+    description:
+      "Aplicação web responsiva para agendamento online com integração ao WhatsApp e notificações automáticas. Tecnologias: Next.js, Firebase, Tailwind CSS, n8n e TypeScript.",
+    technologies: ["Next.js", "Firebase", "Tailwind CSS", "n8n", "TypeScript"],
+    image: "/projects/barberia.jpg",
+    video: "/videos/barbearia.mp4",
+    videoStatus: "available",
+    featured: true,
+    category: "Sistema Web",
+    hasVideo: true,
   },
   {
     id: 3,
+    slug: "opensource-api",
     title: "OpenSource-API Backend",
-    description: "API REST completa para gestão de usuários, posts e comentários com autenticação JWT, sistema de roles e banco SQLite. Projeto acadêmico com arquitetura robusta e documentação completa.",
+    description:
+      "API REST para gestão de usuários, posts e comentários com autenticação JWT, sistema de roles e banco SQLite. Tecnologias: Node.js, Express, SQLite, JWT e REST API.",
     technologies: ["Node.js", "Express", "SQLite", "JWT", "REST API"],
-    image: "/projects/OpenSouce.jpg", // Imagem específica para o projeto de API
-    video: "/videos/OpenSource.mp4", // Vídeo local da API OpenSource
-    link: "https://github.com/Raphaelacristiane667/OpenSource-API", // Link para o GitHub
-    featured: true,    // Projeto em destaque!
+    image: "/projects/OpenSouce.jpg",
+    video: "/videos/OpenSource.mp4",
+    videoStatus: "available",
+    link: "https://github.com/Raphaelacristiane667/OpenSource-API",
+    featured: true,
     category: "Backend API",
-    hasVideo: true
+    hasVideo: true,
   },
   {
-    id: 4,
-    title: "Dashboard de Analytics",
-    description: "Painel administrativo com gráficos interativos e métricas em tempo real. Ideal para monitoramento de negócios e tomada de decisões.",
-    technologies: ["React", "Chart.js", "Node.js", "MongoDB", "Express"],
-    image: "/projects/portfolio.jpg", // Usando imagem existente como placeholder
-    video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Vídeo demonstrativo do dashboard
-    link: undefined,
-    featured: false,    // Não é destaque, aparece apenas na página de projetos
-    category: "Dashboard",
-    hasVideo: true
-  },
-  {
-    id: 5,
-    title: "App de Delivery",
-    description: "Aplicativo móvel para delivery de comida com geolocalização e pagamentos. Sistema completo de pedidos e rastreamento em tempo real.",
-    technologies: ["React Native", "Firebase", "Google Maps API", "Stripe"],
-    image: "/projects/delivery.jpg",
-    video: "https://www.youtube.com/watch?v=exemplo-delivery", // Vídeo demonstrativo
-    link: undefined, // App não publicado
+    id: 2,
+    slug: "portfolio",
+    title: "Portfólio Pessoal",
+    description:
+      "Este site: portfólio profissional com Next.js, animações, i18n PT/EN e foco em projetos reais. Tecnologias: Next.js, Tailwind CSS, Framer Motion e TypeScript.",
+    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
+    image: "/projects/portfolio.jpg",
+    video: "/videos/portfolio.mp4",
+    videoStatus: "available",
+    link: "/",
     featured: false,
-    category: "Mobile",
-    hasVideo: true
+    category: "Portfólio",
+    hasVideo: true,
   },
-  {
-    id: 6,
-    title: "Blog Corporativo",
-    description: "Blog moderno com sistema de CMS, SEO otimizado e design responsivo. Perfeito para empresas que querem compartilhar conteúdo relevante.",
-    technologies: ["Next.js", "Sanity CMS", "Tailwind CSS", "TypeScript"],
-    image: "/projects/blog.jpg",
-    video: "https://www.youtube.com/watch?v=exemplo-blog", // Vídeo demonstrativo
-    link: undefined, // Site não publicado
-    featured: false,
-    category: "Blog",
-    hasVideo: true
-  }
 ];
 
-// Função para obter apenas os projetos em destaque
-// Retorna um array filtrado com projetos onde featured = true
-// Usado na página inicial para mostrar os melhores trabalhos
-export const getFeaturedProjects = (): Project[] => {
-  return projects.filter(project => project.featured);
-};
+export const getFeaturedProjects = (): Project[] =>
+  projects.filter((p) => p.featured);
 
-// Função para obter projetos por categoria específica
-// Útil para filtrar projetos na página de projetos
-// Ex: getProjectsByCategory("E-commerce") retorna apenas projetos de e-commerce
-export const getProjectsByCategory = (category: string): Project[] => {
-  return projects.filter(project => 
-    project.category.toLowerCase() === category.toLowerCase()
+export const getAllProjects = (): Project[] => projects;
+
+export const getProjectBySlug = (slug: string): Project | undefined =>
+  projects.find((p) => p.slug === slug);
+
+export const getProjectsByCategory = (category: string): Project[] =>
+  projects.filter(
+    (p) => p.category.toLowerCase() === category.toLowerCase()
   );
-};
 
-// Função para obter todas as categorias únicas disponíveis
-// Usado para criar filtros e navegação por categoria
-// Retorna um array com nomes únicos de categorias
-export const getCategories = (): string[] => {
-  // Usa Set para remover duplicatas e spread operator para converter de volta para array
-  return [...new Set(projects.map(project => project.category))];
-};
+export const getCategories = (): string[] =>
+  [...new Set(projects.map((p) => p.category))];
 
-// Função para obter projetos com vídeos
-// Útil para mostrar projetos que têm demonstrações em vídeo
-export const getProjectsWithVideos = (): Project[] => {
-  return projects.filter(project => project.hasVideo);
-};
+export const getProjectsWithVideos = (): Project[] =>
+  projects.filter((p) => p.hasVideo);
+
+/** Caminhos de vídeo reservados — substituir arquivos em public/videos/ quando prontos */
+export const RESERVED_VIDEO_PATHS = {
+  cronograma: "/videos/cronograma-way-brasil.mp4",
+  papersign: "/videos/papersign.mp4",
+} as const;

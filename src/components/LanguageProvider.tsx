@@ -42,7 +42,8 @@ const translations: TranslationDictionary = {
   },
   "about.skills": { pt: "Habilidades Técnicas", en: "Technical Skills" },
   "about.frontend": { pt: "Frontend", en: "Frontend" },
-  "about.backend": { pt: "Backend & Ferramentas", en: "Backend & Tools" },
+  "about.backend": { pt: "Backend", en: "Backend" },
+  "about.tools": { pt: "Ferramentas", en: "Tools" },
 
   // Featured Services
   "services.heading": { pt: "Serviços em Destaque", en: "Featured Services" },
@@ -59,6 +60,8 @@ const translations: TranslationDictionary = {
   "projects.btn.dev": { pt: "Em Desenvolvimento", en: "In Development" },
   "projects.btn.details": { pt: "Ver Detalhes", en: "View Details" },
   "projects.btn.all": { pt: "Ver Todos os Projetos", en: "View All Projects" },
+  "projects.btn.videoSoon": { pt: "Vídeo em breve", en: "Video coming soon" },
+  "projects.video.reserved": { pt: "Demonstração em gravação", en: "Demo recording in progress" },
 
   // Projects page header
   "projects.page.title.part1": { pt: "Meus ", en: "My " },

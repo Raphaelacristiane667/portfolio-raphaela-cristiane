@@ -3,6 +3,20 @@
 
 /* Importação do CSS do BB-8 Toggle */
 @import './bb8-toggle.css';
+@import './header.css';
+
+:root {
+  --header-height: 64px;
+}
+
+.section-anchor {
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
+body.mobile-menu-open .floating-whatsapp-btn {
+  visibility: hidden;
+  pointer-events: none;
+}
 
 /* Reset CSS básico */
 * {
@@ -844,6 +858,121 @@ html:not(.dark) footer a, html:not(.dark) footer button {
   }
 }
 
+/* Habilidades técnicas — layout próprio (não depende de utilitários Tailwind ausentes) */
+.about-skills-band {
+  margin-top: 2.5rem;
+  padding: 1.75rem 1.5rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+.about-skills-band__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.about-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.about-skills-group__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #d1d5db;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+.about-skills-group__label--frontend {
+  border-bottom: 1px solid rgba(236, 72, 153, 0.35);
+}
+
+.about-skills-group__label--backend {
+  border-bottom: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+.about-skills-group__label--tools {
+  border-bottom: 1px solid rgba(6, 182, 212, 0.35);
+}
+
+.about-skills-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.about-skills-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.2;
+  cursor: default;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-skills-pill:hover {
+  transform: translateY(-1px) scale(1.03);
+}
+
+.about-skills-pill--frontend {
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  box-shadow: 0 2px 10px rgba(236, 72, 153, 0.28);
+}
+
+.about-skills-pill--backend {
+  background: linear-gradient(135deg, #a855f7, #06b6d4);
+  box-shadow: 0 2px 10px rgba(168, 85, 247, 0.28);
+}
+
+.about-skills-pill--tools {
+  background: linear-gradient(135deg, #0891b2, #6366f1);
+  box-shadow: 0 2px 10px rgba(8, 145, 178, 0.28);
+}
+
+@media (min-width: 768px) {
+  .about-skills-band {
+    padding: 2rem 2.25rem 2.25rem;
+  }
+
+  .about-skills-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 2.5rem;
+  }
+
+  .about-skills-group--tools {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-skills-band {
+    margin-top: 3rem;
+  }
+
+  .about-skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 2.5rem;
+  }
+
+  .about-skills-group--tools {
+    grid-column: auto;
+  }
+}
+
+#about {
+  padding-bottom: 3rem;
+}
+
 /* Text alignment */
 .text-center {
   text-align: center;
@@ -1223,50 +1352,7 @@ html.dark .floating-whatsapp-btn {
   }
 }
 
-/* Menu mobile centralizado */
-@media (max-width: 768px) {
-  /* Header mobile - prevenir overflow desde o carregamento */
-  header {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    /* Permitir rolagem vertical */
-    overflow-y: visible !important;
-  }
-  
-  /* Container do menu mobile */
-  div[class*="border-t"][class*="py-0.5"] {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    text-align: center !important;
-    overflow-x: hidden !important;
-  }
-  
-  /* Navegação mobile */
-  nav.flex.flex-col.items-center.space-y-0 {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 auto !important;
-  }
-  
-  /* Cards do menu mobile */
-  .nav-card {
-    margin: 0.75rem auto !important;
-    text-align: center !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100% !important;
-    max-width: 200px !important;
-  }
-}
+/* Menu mobile legado removido — ver header.css */
 
 /* Habilidades técnicas centralizadas no mobile */
 @media (max-width: 768px) {

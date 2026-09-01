@@ -29,6 +29,20 @@
   }
 }
 
+/* Header: BB-8 não pode ultrapassar barra de 64px */
+.site-header .bb8-toggle {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .site-header .bb8-toggle {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .bb8-toggle:hover {
   transform: scale(1.05);
 }

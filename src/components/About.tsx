@@ -22,19 +22,63 @@ import { useLanguage } from '@/components/LanguageProvider';
 // Apresenta informações pessoais, habilidades e estatísticas profissionais
 export default function About() {
   const { t } = useLanguage();
-  // Lista de habilidades técnicas organizadas por categoria
-  // Estas são as principais tecnologias que Raphaela domina
-  const skills = [
-    "HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", 
-    "Tailwind CSS", "Firebase", "Node.js", "Git", "Figma"
+  const frontendSkills = [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "React Native",
+    "Next.js",
+    "Tailwind CSS",
+    "Vite",
+    "Material UI",
+    "Framer Motion",
   ];
 
+  const backendSkills = [
+    "TypeScript",
+    "C#",
+    "Java",
+    "PHP",
+    "Node.js",
+    "Express",
+    "Spring Boot",
+    "ASP.NET Core",
+    "SQL Server",
+    "PostgreSQL",
+    "SQLite",
+  ];
+
+  const toolsSkills = [
+    "ScriptCase",
+    "Git",
+    "GitHub Actions",
+    "IIS",
+    "Prisma",
+    "n8n",
+    "Figma",
+  ];
+
+  const renderSkillPill = (
+    skill: string,
+    index: number,
+    variant: "frontend" | "backend" | "tools"
+  ) => (
+    <motion.span
+      key={skill}
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.04 }}
+      viewport={{ once: true }}
+      className={`about-skills-pill about-skills-pill--${variant}`}
+    >
+      {skill}
+    </motion.span>
+  );
+
   return (
-    // Seção principal com padding vertical e fundo cinza escuro
-    <section id="about" className="py-20" style={{ backgroundColor: 'var(--color-dark-gray)' }}>
+    <section id="about" className="section-anchor py-20" style={{ backgroundColor: 'var(--color-dark-gray)' }}>
       <div className="container-custom">
-        {/* Grid responsivo: 1 coluna em mobile, 2 colunas em desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           
           {/* 
             Coluna da esquerda - Foto de perfil em card redondo elegante
@@ -124,7 +168,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex flex-col justify-center min-h-[600px]"
+            className="flex flex-col justify-center"
           >
             {/* Título da seção com cores diferenciadas */}
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
@@ -136,103 +180,60 @@ export default function About() {
               Descrição pessoal dividida em parágrafos
               Cada parágrafo conta uma parte da história profissional
             */}
-            <div className="space-y-6 mb-12">
-              {/* Primeiro parágrafo: Apresentação e paixão */}
+            <div className="space-y-6">
               <p className="text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                 {t('about.p1')}
               </p>
-              
-              {/* Segundo parágrafo: Missão e compromisso */}
               <p className="text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                 {t('about.p2')}
               </p>
-              
-              {/* Terceiro parágrafo: Experiência e localização */}
               <p className="text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                 {t('about.p3')}
               </p>
             </div>
+          </motion.div>
+        </div>
 
-            {/* 
-              Seção de habilidades técnicas
-              Cada habilidade aparece com animação sequencial
-            */}
-            <div className="flex-1">
-              <h3 className="text-xl font-semibold mb-8 text-gradient">
-                {t('about.skills')}
-              </h3>
-              
-              {/* Container vertical: frontend em cima, backend embaixo */}
-              <div className="space-y-10">
-                {/* Categoria: Frontend */}
-                <div>
-                  <h4 className="text-base font-medium text-gray-300 mb-6 uppercase tracking-wider border-b border-pink-500/30 pb-3">
-                    {t('about.frontend')}
-                  </h4>
-                  <div className="flex flex-wrap gap-1">
-                    {["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"].map((skill, index) => (
-                      <motion.span
-                        key={skill}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="inline-block text-sm font-medium cursor-default transition-all duration-300 hover:scale-105"
-                        style={{
-                          background: 'linear-gradient(135deg, #ec4899, #a855f7)',
-                          color: 'white',
-                          padding: skill === "Tailwind CSS" ? '4px 05px' : '4px 10px',
-                          borderRadius: '8px',
-                          fontSize: '14px',
-                          fontFamily: 'Arial, sans-serif',
-                          margin: '4px',
-                          boxShadow: '0 2px 8px rgba(236, 72, 153, 0.3)',
-                          whiteSpace: skill === "Tailwind CSS" ? 'nowrap' : 'normal',
-                          overflow: skill === "Tailwind CSS" ? 'hidden' : 'visible',
-                          textAlign: 'center'
-                        }}
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="about-skills-band"
+        >
+          <h3 className="about-skills-band__title text-gradient">
+            {t('about.skills')}
+          </h3>
 
-                {/* Categoria: Backend & Ferramentas */}
-                <div>
-                  <h4 className="text-base font-medium text-gray-300 mb-6 uppercase tracking-wider border-b border-purple-500/30 pb-3">
-                    {t('about.backend')}
-                  </h4>
-                  <div className="flex flex-wrap gap-1">
-                    {["Firebase", "Node.js", "Git", "Figma", "PHP", "Python", "MySQL"].map((skill, index) => (
-                      <motion.span
-                        key={skill}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="inline-block text-sm font-medium cursor-default transition-all duration-300 hover:scale-105"
-                        style={{
-                          background: 'linear-gradient(135deg, #a855f7, #06b6d4)',
-                          color: 'white',
-                          padding: '4px 12px',
-                          borderRadius: '8px',
-                          fontSize: '14px',
-                          fontFamily: 'Arial, sans-serif',
-                          margin: '4px',
-                          boxShadow: '0 2px 8px rgba(168, 85, 247, 0.3)'
-                        }}
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
+          <div className="about-skills-grid">
+            <div className="about-skills-group">
+              <h4 className="about-skills-group__label about-skills-group__label--frontend">
+                {t('about.frontend')}
+              </h4>
+              <div className="about-skills-pills">
+                {frontendSkills.map((skill, index) => renderSkillPill(skill, index, "frontend"))}
               </div>
             </div>
 
-          </motion.div>
-        </div>
+            <div className="about-skills-group">
+              <h4 className="about-skills-group__label about-skills-group__label--backend">
+                {t('about.backend')}
+              </h4>
+              <div className="about-skills-pills">
+                {backendSkills.map((skill, index) => renderSkillPill(skill, index, "backend"))}
+              </div>
+            </div>
+
+            <div className="about-skills-group about-skills-group--tools">
+              <h4 className="about-skills-group__label about-skills-group__label--tools">
+                {t('about.tools')}
+              </h4>
+              <div className="about-skills-pills">
+                {toolsSkills.map((skill, index) => renderSkillPill(skill, index, "tools"))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
