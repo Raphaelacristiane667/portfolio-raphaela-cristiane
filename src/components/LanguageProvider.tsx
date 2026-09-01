@@ -71,6 +71,52 @@ const translations: TranslationDictionary = {
     en: "The project cards below detail each system, tech stack, and video demos."
   },
 
+  // Uniube — apresentação acadêmica
+  "uniube.badge": { pt: "Uniube · Formação & compartilhamento", en: "Uniube · Education & sharing" },
+  "uniube.title.part1": { pt: "Da sala de aula ", en: "From the classroom " },
+  "uniube.title.part2": { pt: "ao palco", en: "to the stage" },
+  "uniube.subtitle": {
+    pt: "Retornar à universidade para compartilhar minha trajetória com futuros profissionais de TI conecta formação acadêmica e prática no mercado.",
+    en: "Returning to university to share my journey with future IT professionals bridges academic training and real-world practice."
+  },
+  "uniube.tags.label": { pt: "Contexto da apresentação", en: "Presentation context" },
+  "uniube.tag.degree": { pt: "Sistemas de Informação", en: "Information Systems" },
+  "uniube.tag.uniube": { pt: "Uniube presencial", en: "Uniube on-campus" },
+  "uniube.tag.talk": { pt: "Apresentação sobre cursos de TI", en: "IT programs presentation" },
+  "uniube.video.label": { pt: "Registro da apresentação", en: "Presentation recording" },
+  "uniube.video.aria": {
+    pt: "Vídeo da apresentação sobre cursos de TI na Uniube",
+    en: "Video of the IT programs presentation at Uniube"
+  },
+  "uniube.video.fallback": {
+    pt: "Seu navegador não suporta reprodução de vídeo.",
+    en: "Your browser does not support video playback."
+  },
+  "uniube.p1": {
+    pt: "Estou no último período de Sistemas de Informação presencial e tive a oportunidade de voltar à Uniube não apenas como aluna, mas como alguém que pôde compartilhar um pouco da própria trajetória com quem está começando.",
+    en: "I'm in my final semester of on-campus Information Systems and had the chance to return to Uniube not only as a student, but as someone who could share a bit of her own journey with those just starting out."
+  },
+  "uniube.p2": {
+    pt: "Participei de uma apresentação sobre os cursos de Tecnologia da Informação da universidade, mostrando aos alunos como os conhecimentos construídos na graduação saem da sala de aula e se transformam em projetos reais, soluções e resultados que desenvolvo e aplico no meu trabalho.",
+    en: "I took part in a presentation about the university's Information Technology programs, showing students how knowledge built during the degree leaves the classroom and becomes real projects, solutions, and outcomes I develop and apply at work."
+  },
+  "uniube.p3": {
+    pt: "Grande parte da base que utilizo no meu dia a dia profissional começou durante a graduação. Momentos como esse mostram que existem muitos caminhos possíveis dentro da área de TI — e que a formação pode ser o ponto de partida para construir soluções e transformar conhecimento em prática.",
+    en: "Much of the foundation I use in my daily professional work began during my degree. Moments like this show there are many paths within IT — and that education can be the starting point for building solutions and turning knowledge into practice."
+  },
+  "uniube.quote": {
+    pt: "Um dia você está sentado na sala de aula aprendendo. Em outro, está na frente dela compartilhando aquilo que aprendeu.",
+    en: "One day you're sitting in class learning. On another, you're standing in front of it sharing what you've learned."
+  },
+  "uniube.team": {
+    pt: "Participei desse momento ao lado do Luiz Paiva, Diretor dos cursos de TI presenciais da Uniube, e da minha colega Júlia Borges, aluna de Ciência da Computação presencial.",
+    en: "I shared this moment alongside Luiz Paiva, Director of Uniube's on-campus IT programs, and my colleague Júlia Borges, an on-campus Computer Science student."
+  },
+  "uniube.closing": {
+    pt: "Ainda tenho muito a aprender e muitos caminhos para percorrer, mas poder olhar para essa trajetória e compartilhá-la já representa uma conquista enorme. Obrigada, Uniube, pela formação, pela oportunidade e por fazer parte dessa caminhada.",
+    en: "I still have much to learn and many paths ahead, but being able to look back at this journey and share it is already a huge achievement. Thank you, Uniube, for the education, the opportunity, and being part of this path."
+  },
+
   // Featured Services
   "services.heading": { pt: "Serviços em Destaque", en: "Featured Services" },
   "services.subtitle": { pt: "Soluções digitais completas para transformar suas ideias em realidade", en: "Complete digital solutions to turn your ideas into reality" },
@@ -93,6 +139,32 @@ const translations: TranslationDictionary = {
   "projects.page.title.part1": { pt: "Meus ", en: "My " },
   "projects.page.title.part2": { pt: "Projetos", en: "Projects" },
   "projects.page.subtitle": { pt: "Uma coleção dos meus melhores trabalhos em desenvolvimento web, mobile e backend. Cada projeto representa uma solução única para um desafio específico.", en: "A collection of my best work in web, mobile and backend development. Each project represents a unique solution to a specific challenge." },
+
+  // Contact page
+  "contact.title.part1": { pt: "Entre em ", en: "Get in " },
+  "contact.title.part2": { pt: "Contato", en: "Touch" },
+  "contact.subtitle": {
+    pt: "Tem um projeto, dúvida ou oportunidade? Escolha o canal que preferir — respondo o mais breve possível.",
+    en: "Have a project, question, or opportunity? Choose your preferred channel — I'll reply as soon as possible."
+  },
+  "contact.channels.title": { pt: "Canais de contato", en: "Contact channels" },
+  "contact.whatsapp.title": { pt: "WhatsApp", en: "WhatsApp" },
+  "contact.whatsapp.desc": { pt: "Conversa rápida sobre projetos, prazos e orçamentos.", en: "Quick chat about projects, timelines, and estimates." },
+  "contact.whatsapp.cta": { pt: "Iniciar conversa", en: "Start chat" },
+  "contact.email.title": { pt: "E-mail", en: "Email" },
+  "contact.email.desc": { pt: "Envie briefing, documentos ou propostas formais.", en: "Send briefs, documents, or formal proposals." },
+  "contact.email.cta": { pt: "Enviar e-mail", en: "Send email" },
+  "contact.linkedin.title": { pt: "LinkedIn", en: "LinkedIn" },
+  "contact.linkedin.desc": { pt: "Conecte-se e acompanhe minha trajetória profissional.", en: "Connect and follow my professional journey." },
+  "contact.linkedin.cta": { pt: "Ver perfil", en: "View profile" },
+  "contact.help.title": { pt: "Como posso ajudar", en: "How I can help" },
+  "contact.help.web": { pt: "Desenvolvimento web e sistemas corporativos sob medida.", en: "Custom web development and corporate systems." },
+  "contact.help.integration": { pt: "Integrações, automações e APIs entre plataformas.", en: "Integrations, automations, and cross-platform APIs." },
+  "contact.help.consulting": { pt: "Consultoria técnica, evolução de produtos e suporte.", en: "Technical consulting, product evolution, and support." },
+  "contact.info.title": { pt: "Informações", en: "Details" },
+  "contact.info.location": { pt: "Brasil · atendimento remoto", en: "Brazil · remote work" },
+  "contact.info.response": { pt: "Resposta em até 24 horas úteis", en: "Reply within 24 business hours" },
+  "contact.info.availability": { pt: "Disponível para projetos e parcerias", en: "Available for projects and partnerships" },
 
   // Footer
   "footer.about.title": { pt: "Raphaela Cristiane", en: "Raphaela Cristiane" },

@@ -100,7 +100,7 @@ export const projects: Project[] = [
     slug: "rq08-treinamentos",
     title: "RQ08 — Gestão de Treinamentos",
     description:
-      "Sistema corporativo de gestão de treinamentos Way Brasil, com frontend alinhado ao design system PaperSign/Cronograma. Tecnologias: React 19, TypeScript, Vite, Tailwind CSS, Node.js, Express, Prisma, Microsoft SQL Server e Recharts.",
+      "Sistema corporativo de gestão de treinamentos Way Brasil, com frontend alinhado ao design system PaperSign/Cronograma e integração com IA para apoio inteligente aos fluxos de capacitação. Tecnologias: React 19, TypeScript, Vite, Tailwind CSS, Node.js, Express, Prisma, Microsoft SQL Server, Recharts e Inteligência Artificial.",
     technologies: [
       "React 19",
       "TypeScript",
@@ -111,6 +111,7 @@ export const projects: Project[] = [
       "Prisma",
       "Microsoft SQL Server",
       "Recharts",
+      "Inteligência Artificial",
     ],
     image: "/projects/rq08.png",
     featured: true,

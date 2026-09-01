@@ -18,7 +18,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Laptop, Palette, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+
+const CARD_WIDTH = 380;
 
 export default function FeaturedServices() {
   const { t, language } = useLanguage();
@@ -27,37 +29,49 @@ export default function FeaturedServices() {
   const services = [
     {
       icon: Laptop,
-      title: language === 'en' ? 'Web Development' : 'Desenvolvimento Web',
-      description: language === 'en' ? 'Responsive, fast and modern websites and applications. Complete development from design to implementation.' : 'Sites e aplicações responsivas, rápidos e com visual moderno. Desenvolvimento completo desde o design até a implementação.',
+      slug: "web-development",
+      title: language === "en" ? "Web Development" : "Desenvolvimento Web",
+      description:
+        language === "en"
+          ? "Responsive, fast and modern websites and applications. Complete development from design to implementation."
+          : "Sites e aplicações responsivas, rápidos e com visual moderno. Desenvolvimento completo desde o design até a implementação.",
       features: [
-        language === 'en' ? 'Responsive and SEO-optimized websites' : 'Sites responsivos e otimizados para SEO',
-        language === 'en' ? 'Web apps with React/Next.js' : 'Aplicações web com React/Next.js',
-        language === 'en' ? 'API and database integration' : 'Integração com APIs e bancos de dados'
+        language === "en" ? "Responsive and SEO-optimized websites" : "Sites responsivos e otimizados para SEO",
+        language === "en" ? "Web apps with React/Next.js" : "Aplicações web com React/Next.js",
+        language === "en" ? "API and database integration" : "Integração com APIs e bancos de dados",
       ],
-      color: "from-blue-500 to-cyan-500"
+      gradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
     },
     {
       icon: Palette,
-      title: language === 'en' ? 'UI/UX Design' : 'Design UI/UX',
-      description: language === 'en' ? 'Intuitive and pleasant interfaces focused on usability and modern aesthetics.' : 'Interfaces intuitivas e agradáveis para melhor experiência do usuário. Design focado na usabilidade e estética moderna.',
+      slug: "ui-ux-design",
+      title: language === "en" ? "UI/UX Design" : "Design UI/UX",
+      description:
+        language === "en"
+          ? "Intuitive and pleasant interfaces focused on usability and modern aesthetics."
+          : "Interfaces intuitivas e agradáveis para melhor experiência do usuário. Design focado na usabilidade e estética moderna.",
       features: [
-        language === 'en' ? 'Responsive interface design' : 'Design de interfaces responsivas',
-        language === 'en' ? 'Prototyping and wireframes' : 'Prototipagem e wireframes',
-        language === 'en' ? 'Usability testing' : 'Testes de usabilidade'
+        language === "en" ? "Responsive interface design" : "Design de interfaces responsivas",
+        language === "en" ? "Prototyping and wireframes" : "Prototipagem e wireframes",
+        language === "en" ? "Usability testing" : "Testes de usabilidade",
       ],
-      color: "from-pink-500 to-purple-500"
+      gradient: "linear-gradient(135deg, #ec4899, #a855f7)",
     },
     {
       icon: Zap,
-      title: language === 'en' ? 'Integrations & Automation' : 'Integrações e Automação',
-      description: language === 'en' ? 'Connect systems and automate processes to optimize your business. Integrations with popular APIs and workflow automation.' : 'Conexão de sistemas e automações para otimizar seu negócio. Integrações com APIs populares e automação de processos.',
+      slug: "integrations-automation",
+      title: language === "en" ? "Integrations & Automation" : "Integrações e Automação",
+      description:
+        language === "en"
+          ? "Connect systems and automate processes to optimize your business. Integrations with popular APIs and workflow automation."
+          : "Conexão de sistemas e automações para otimizar seu negócio. Integrações com APIs populares e automação de processos.",
       features: [
-        language === 'en' ? 'API integrations (WhatsApp, Stripe, etc.)' : 'Integração com APIs (WhatsApp, Stripe, etc.)',
-        language === 'en' ? 'Workflow automation' : 'Automação de workflows',
-        language === 'en' ? 'Data synchronization' : 'Sincronização de dados'
+        language === "en" ? "API integrations (WhatsApp, Stripe, etc.)" : "Integração com APIs (WhatsApp, Stripe, etc.)",
+        language === "en" ? "Workflow automation" : "Automação de workflows",
+        language === "en" ? "Data synchronization" : "Sincronização de dados",
       ],
-      color: "from-orange-500 to-yellow-500"
-    }
+      gradient: "linear-gradient(135deg, #f97316, #eab308)",
+    },
   ];
 
   // Duplicar os serviços para criar o efeito infinito circular
@@ -73,7 +87,7 @@ export default function FeaturedServices() {
       position += 0.8;
       
       // Quando chegar ao final, volta ao início para criar o loop circular
-      if (position >= 2400) {
+      if (position >= (CARD_WIDTH + 24) * services.length * 2) {
         position = 0;
       }
 
@@ -111,154 +125,62 @@ export default function FeaturedServices() {
           </p>
         </motion.div>
 
-        {/* Container do carrossel */}
-        <div 
-          className="carousel-container relative mb-12"
-        >
-          <div 
+        <div className="carousel-container relative mb-12">
+          <div
             ref={carouselRef}
-            className="carousel-track flex gap-8"
+            className="carousel-track"
             style={{
-              width: `${duplicatedServices.length * 400}px`,
-              minWidth: `${duplicatedServices.length * 400}px`
+              width: `${duplicatedServices.length * CARD_WIDTH}px`,
             }}
           >
             {duplicatedServices.map((service, index) => (
               <motion.div
-                key={index}
+                key={`${service.slug}-${index}`}
                 initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: (index % services.length) * 0.2 }}
                 viewport={{ once: true }}
-                className="carousel-item flex-shrink-0"
-                style={{ 
-                  width: '400px',
-                  minWidth: '400px',
-                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                  transform: 'translateZ(0)',
-                  position: 'relative'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) scale(1.05) translateY(-20px)';
-                  e.currentTarget.style.zIndex = '10';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) scale(1) translateY(0)';
-                  e.currentTarget.style.zIndex = '1';
-                }}
+                className="carousel-item"
               >
-                <Card 
-                  className="card service-carousel-card h-full overflow-hidden group border-0 shadow-none transition-all duration-700 transform hover:-translate-y-3 relative"
-                >
-                  {/* Glow interno */}
-                  <div 
-                    className="glow-internal absolute inset-0 rounded-xl pointer-events-none"
-                    style={{
-                      opacity: '0',
-                      transition: 'opacity 0.7s ease',
-                      filter: 'blur(2px)'
-                    }}
-                  ></div>
-                  
-                  {/* Glow externo */}
-                  <div 
-                    className="glow-external absolute -inset-3 rounded-xl pointer-events-none"
-                    style={{
-                      opacity: '0',
-                      transition: 'opacity 0.7s ease',
-                      filter: 'blur(12px)',
-                      zIndex: '-1'
-                    }}
-                  ></div>
-                  
-                  {/* Padrão de fundo */}
-                  <div 
-                    className="service-carousel-card__pattern absolute inset-0 rounded-xl opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
-                  ></div>
-                  
-                  <div className="card-content relative z-10 transition-transform duration-700">
-                    <CardHeader className="pb-6">
-                      <div 
-                        className="w-20 h-20 rounded-3xl flex items-center justify-center mb-6 mx-auto transition-all duration-500 group-hover:scale-110" 
-                        style={{
-                          background: `linear-gradient(135deg, ${service.color})`,
-                          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.1)'
-                        }}
+                <Card className="service-carousel-card h-full group relative">
+                  <div className="service-carousel-card__pattern" aria-hidden />
+
+                  <div className="service-carousel-card__body">
+                    <CardHeader className="service-carousel-card__header">
+                      <div
+                        className="service-carousel-card__icon"
+                        style={{ background: service.gradient }}
                       >
-                        <service.icon size={32} className="text-white drop-shadow-lg" />
+                        <service.icon size={32} className="text-white" aria-hidden />
                       </div>
-                      
-                      <CardTitle 
-                        className="project-card__title text-2xl font-bold text-center mb-3 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text" 
-                        style={{ 
-                          background: `linear-gradient(135deg, ${service.color})`,
-                          backgroundClip: 'text',
-                          WebkitBackgroundClip: 'text'
-                        }}
-                      >
+
+                      <CardTitle className="service-carousel-card__title">
                         {service.title}
                       </CardTitle>
-                      
-                      <CardDescription 
-                        className="project-card__desc text-center leading-relaxed transition-all duration-500 text-base" 
-                      >
+
+                      <CardDescription className="service-carousel-card__desc">
                         {service.description}
                       </CardDescription>
                     </CardHeader>
-                    
-                    <CardContent className="pt-0">
-                      <ul className="space-y-4 mb-8">
+
+                    <CardContent className="service-carousel-card__content">
+                      <ul className="service-carousel-card__features">
                         {service.features.map((feature, featureIndex) => (
-                          <li 
-                            key={featureIndex} 
-                            className="flex items-start space-x-4 transition-all duration-500 group-hover:translate-x-2"
-                          >
-                            <div 
-                              className="feature-dot w-3 h-3 rounded-full mt-2 flex-shrink-0 transition-all duration-500 flex items-center justify-center" 
-                              style={{
-                                background: `linear-gradient(135deg, ${service.color})`,
-                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
-                              }}
-                            >
-                              <div className="w-1 h-1 bg-white rounded-full opacity-80"></div>
-                            </div>
-                            <span 
-                              className="project-card__desc text-sm leading-relaxed transition-all duration-500 font-medium" 
-                            >
-                              {feature}
-                            </span>
+                          <li key={featureIndex}>
+                            <span
+                              className="service-carousel-card__dot"
+                              style={{ background: service.gradient }}
+                              aria-hidden
+                            />
+                            <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
-                      
-                      {/* Botão pill gradient */}
-                      <div className="text-center">
-                        <Link href={index % services.length === 0 ? '/services/web-development' : index % services.length === 1 ? '/services/ui-ux-design' : '/services/integrations-automation'}>
-                          <button 
-                            className="service-button"
-                            style={{
-                              background: 'linear-gradient(90deg, #ff4d8d, #8a4dff) !important',
-                              border: 'none !important',
-                              borderRadius: '8px !important',
-                              padding: '15px 50px !important',
-                              color: '#fff !important',
-                              fontWeight: 'bold !important',
-                              fontSize: '16px !important',
-                              cursor: 'pointer !important',
-                              transition: 'transform 0.2s ease, opacity 0.2s ease !important',
-                              display: 'inline-block !important',
-                              width: 'auto !important'
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.transform = 'scale(1.05)';
-                              e.currentTarget.style.opacity = '0.9';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.transform = 'scale(1)';
-                              e.currentTarget.style.opacity = '1';
-                            }}
-                          >
-                            {t('services.button.details')}
+
+                      <div className="service-carousel-card__actions">
+                        <Link href={`/services/${service.slug}`}>
+                          <button type="button" className="service-button">
+                            {t("services.button.details")}
                           </button>
                         </Link>
                       </div>
@@ -279,112 +201,12 @@ export default function FeaturedServices() {
           className="text-center"
         >
           <Link href="/services">
-            <button 
-              className="cta-button"
-              style={{
-                background: 'linear-gradient(90deg, #ff4d8d, #8a4dff) !important',
-                border: 'none !important',
-                borderRadius: '8px !important',
-                padding: '15px 50px !important',
-                color: '#fff !important',
-                fontWeight: 'bold !important',
-                fontSize: '16px !important',
-                cursor: 'pointer !important',
-                transition: 'transform 0.2s ease, opacity 0.2s ease !important',
-                display: 'inline-block !important',
-                width: 'auto !important'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'scale(1.05)';
-                e.currentTarget.style.opacity = '0.9';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.opacity = '1';
-              }}
-            >
-              {t('services.button.all')}
+            <button type="button" className="cta-button">
+              {t("services.button.all")}
             </button>
           </Link>
         </motion.div>
       </div>
-      
-      <style jsx>{`
-        .carousel-container {
-          overflow: hidden;
-          position: relative;
-          cursor: grab;
-          width: 100%;
-        }
-        
-        .carousel-container:hover {
-          cursor: grab;
-        }
-        
-        .carousel-track {
-          will-change: transform;
-          display: flex;
-          gap: 2rem;
-          transition: transform 0.1s linear;
-        }
-        
-        .carousel-item {
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          flex-shrink: 0;
-          width: 400px;
-          min-width: 400px;
-          transform: translateZ(0);
-          position: relative;
-        }
-        
-        .carousel-item:hover {
-          transform: translateZ(0) scale(1.05) translateY(-20px) !important;
-          z-index: 10;
-        }
-        
-        .carousel-item:hover .card {
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 77, 141, 0.3) !important;
-          transform: scale(1.02);
-        }
-        
-        /* Sombra adaptativa para tema claro */
-        html:not(.dark) .carousel-item:hover .card {
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 77, 141, 0.2) !important;
-        }
-        
-        /* Sombra mais intensa para tema escuro */
-        html.dark .carousel-item:hover .card {
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 77, 141, 0.4) !important;
-        }
-        
-        .service-button {
-          background: linear-gradient(90deg, #ff4d8d, #8a4dff) !important;
-          border: none !important;
-          border-radius: 8px !important;
-          padding: 15px 50px !important;
-          color: #fff !important;
-          font-weight: bold !important;
-          font-size: 16px !important;
-          cursor: pointer !important;
-          transition: transform 0.2s ease, opacity 0.2s ease !important;
-          display: inline-block !important;
-          width: auto !important;
-        }
-        
-        .cta-button {
-          background: linear-gradient(90deg, #ff4d8d, #8a4dff) !important;
-          border: none !important;
-          border-radius: 8px !important;
-          padding: 15px 50px !important;
-          color: #fff !important;
-          font-weight: bold !important;
-          font-size: 16px !important;
-          cursor: pointer !important;
-          transition: transform 0.2s ease, opacity 0.2s ease !important;
-          display: inline-block !important;
-          width: auto !important;
-        }
-      `}</style>
     </section>
   );
 }

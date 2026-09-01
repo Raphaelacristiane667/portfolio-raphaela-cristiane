@@ -64,7 +64,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
           ...project,
           title: 'RQ08 — Training Management',
           description:
-            'Corporate training management system for Way Brasil, frontend aligned with PaperSign/Cronograma design system. Technologies: React 19, TypeScript, Vite, Tailwind CSS, Node.js, Express, Prisma, Microsoft SQL Server, and Recharts.',
+            'Corporate training management system for Way Brasil, frontend aligned with PaperSign/Cronograma design system and AI integration for intelligent support in training workflows. Technologies: React 19, TypeScript, Vite, Tailwind CSS, Node.js, Express, Prisma, Microsoft SQL Server, Recharts, and Artificial Intelligence.',
           category: 'In Development',
         };
       case 'app-cigam':

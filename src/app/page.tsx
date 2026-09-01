@@ -15,6 +15,7 @@
 // Importações dos componentes da página
 import Hero from '@/components/Hero';                    // Seção principal com foto e apresentação
 import About from '@/components/About';                  // Seção sobre mim
+import UniubeShowcase from '@/components/UniubeShowcase'; // Apresentação acadêmica Uniube
 import WayBrasilShowcase from '@/components/WayBrasilShowcase'; // Ecossistema corporativo Way Brasil
 import FeaturedProjects from '@/components/FeaturedProjects'; // Projetos em destaque
 import FeaturedServices from '@/components/FeaturedServices'; // Serviços oferecidos
@@ -42,6 +43,9 @@ export default function Home() {
       
       {/* Seção Sobre - Informações pessoais e profissionais */}
       <About />
+
+      {/* Apresentação na Uniube — formação acadêmica e compartilhamento */}
+      <UniubeShowcase />
 
       {/* Ecossistema Way Brasil — Cronograma + PaperSign (5 concessionárias) */}
       <WayBrasilShowcase />
