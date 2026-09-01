@@ -15,10 +15,10 @@
 // Importações dos componentes da página
 import Hero from '@/components/Hero';                    // Seção principal com foto e apresentação
 import About from '@/components/About';                  // Seção sobre mim
+import WayBrasilShowcase from '@/components/WayBrasilShowcase'; // Ecossistema corporativo Way Brasil
 import FeaturedProjects from '@/components/FeaturedProjects'; // Projetos em destaque
 import FeaturedServices from '@/components/FeaturedServices'; // Serviços oferecidos
 import FloatingWhatsApp from '@/components/FloatingWhatsApp'; // Botão WhatsApp flutuante
-import CustomCursor from '@/components/CustomCursor';    // Cursor personalizado com blur/glow
 
 // Metadados da página para SEO
 export const metadata = {
@@ -36,15 +36,15 @@ export const metadata = {
 // Componente principal da página inicial
 export default function Home() {
   return (
-    <main className="min-h-screen bg-dark">
-      {/* Cursor personalizado com blur/glow */}
-      <CustomCursor />
-      
+    <main className="min-h-screen">
       {/* Seção Hero - Apresentação principal */}
       <Hero />
       
       {/* Seção Sobre - Informações pessoais e profissionais */}
       <About />
+
+      {/* Ecossistema Way Brasil — Cronograma + PaperSign (5 concessionárias) */}
+      <WayBrasilShowcase />
       
       {/* Seção Projetos - Trabalhos em destaque */}
       <FeaturedProjects />

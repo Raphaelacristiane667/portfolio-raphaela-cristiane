@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./header.css";
+import "./bb8-toggle.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
@@ -92,8 +94,14 @@ export default function RootLayout({
 }>) {
   return (
     // Elemento HTML raiz com idioma português; o ThemeProvider controla a classe `dark`
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
+        {/* Aplica tema antes da pintura — evita flash e garante dark mode */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`,
+          }}
+        />
         {/* 
           Favicons para diferentes dispositivos e navegadores
           Estes ícones aparecem na aba do navegador e favoritos
@@ -108,6 +116,13 @@ export default function RootLayout({
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
+
+        {/* CSS crítico mobile — garante header mesmo se chunk CSS atrasar */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `@media(max-width:1023px){.site-header__nav{display:none!important}.site-header__menu-btn{display:inline-flex!important}.site-header__mobile-panel{display:none}.site-header__mobile-panel.is-open{display:flex!important}}@media(min-width:1024px){.site-header__menu-btn{display:none!important}.site-header__mobile-panel,.site-header__mobile-panel.is-open{display:none!important}}.bb8-toggle__checkbox{position:absolute;opacity:0;width:0;height:0;pointer-events:none}.site-header{position:fixed;top:0;left:0;right:0;z-index:50;height:64px}`,
+          }}
+        />
         
         {/* 
           Preconnect para melhorar a performance de carregamento
@@ -115,6 +130,10 @@ export default function RootLayout({
         */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
       </head>
       
       {/* 

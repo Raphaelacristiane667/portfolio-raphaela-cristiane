@@ -94,19 +94,19 @@ export default function FeaturedServices() {
   }, []);
 
   return (
-    <section id="services" className="section-anchor featured-services-section py-20 overflow-hidden bg-white dark:bg-[var(--color-dark)]">
+    <section id="services" className="section-anchor featured-services-section py-20 overflow-hidden">
       <div className="container-custom">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient text-gray-900 dark:text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
             {t('services.heading')}
           </h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed text-gray-700 dark:text-gray-300">
+          <p className="text-xl max-w-3xl mx-auto leading-relaxed theme-text">
             {t('services.subtitle')}
           </p>
         </motion.div>
@@ -126,7 +126,7 @@ export default function FeaturedServices() {
             {duplicatedServices.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: (index % services.length) * 0.2 }}
                 viewport={{ once: true }}
@@ -148,14 +148,7 @@ export default function FeaturedServices() {
                 }}
               >
                 <Card 
-                  className="card h-full overflow-hidden group border-0 shadow-none transition-all duration-700 transform hover:-translate-y-3 relative" 
-                  style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                    cursor: 'pointer'
-                  }}
+                  className="card service-carousel-card h-full overflow-hidden group border-0 shadow-none transition-all duration-700 transform hover:-translate-y-3 relative"
                 >
                   {/* Glow interno */}
                   <div 
@@ -180,10 +173,7 @@ export default function FeaturedServices() {
                   
                   {/* Padrão de fundo */}
                   <div 
-                    className="absolute inset-0 rounded-xl opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
-                    style={{
-                      backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)'
-                    }}
+                    className="service-carousel-card__pattern absolute inset-0 rounded-xl opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
                   ></div>
                   
                   <div className="card-content relative z-10 transition-transform duration-700">
@@ -199,7 +189,7 @@ export default function FeaturedServices() {
                       </div>
                       
                       <CardTitle 
-                        className="text-2xl font-bold text-center mb-3 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text text-gray-900 dark:text-white" 
+                        className="project-card__title text-2xl font-bold text-center mb-3 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text" 
                         style={{ 
                           background: `linear-gradient(135deg, ${service.color})`,
                           backgroundClip: 'text',
@@ -210,7 +200,7 @@ export default function FeaturedServices() {
                       </CardTitle>
                       
                       <CardDescription 
-                        className="text-center leading-relaxed transition-all duration-500 text-base text-gray-700 dark:text-gray-300" 
+                        className="project-card__desc text-center leading-relaxed transition-all duration-500 text-base" 
                       >
                         {service.description}
                       </CardDescription>
@@ -233,7 +223,7 @@ export default function FeaturedServices() {
                               <div className="w-1 h-1 bg-white rounded-full opacity-80"></div>
                             </div>
                             <span 
-                              className="text-sm leading-relaxed transition-all duration-500 font-medium text-gray-700 dark:text-gray-200" 
+                              className="project-card__desc text-sm leading-relaxed transition-all duration-500 font-medium" 
                             >
                               {feature}
                             </span>
@@ -282,7 +272,7 @@ export default function FeaturedServices() {
 
         {/* Botão final */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           viewport={{ once: true }}

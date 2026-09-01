@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-[var(--color-dark)] text-black dark:text-gray-300">
+    <div className="theme-page">
       {/* Header da página (cliente) */}
       <ProjectsHeader />
 

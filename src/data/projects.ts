@@ -28,7 +28,7 @@ export const projects: Project[] = [
     slug: "cronograma-way-brasil",
     title: "Cronograma Way Brasil",
     description:
-      "Plataforma corporativa de cronogramas, projetos, pendências, Gantt/Kanban, RBAC multi-unidade, auditoria, DSP (RQ-154) e integração PaperSign. Tecnologias: React 19, Vite, JavaScript, Node.js, Express, Microsoft SQL Server, SAML, IIS e GitHub Actions.",
+      "Plataforma corporativa de cronogramas, projetos, pendências, Gantt/Kanban, RBAC multi-unidade, auditoria, DSP (RQ-154) e integração PaperSign — em produção nas 5 concessionárias Way Brasil (WAY 364, 153, 112, 306 e 262). Tecnologias: React 19, Vite, JavaScript, Node.js, Express, Microsoft SQL Server, SAML, IIS e GitHub Actions.",
     technologies: [
       "React 19",
       "Vite",
@@ -42,10 +42,9 @@ export const projects: Project[] = [
     ],
     image: "/projects/cronograma.png",
     video: "/videos/cronograma-way-brasil.mp4",
-    videoStatus: "pending",
     featured: true,
     category: "Sistema Corporativo",
-    hasVideo: true,
+    hasVideo: false,
     professional: true,
   },
   {
@@ -53,7 +52,7 @@ export const projects: Project[] = [
     slug: "papersign",
     title: "PaperSign",
     description:
-      "Sistema de aprovações, assinaturas digitais (PlugSign/ICP-Brasil) e fluxos documentais integrado ao TOTVS RM e ao ecossistema Cronograma, multi-unidade Way Brasil. Tecnologias: Next.js, React 19, TypeScript, Tailwind CSS, ASP.NET Core, C#, Microsoft SQL Server e react-pdf.",
+      "Sistema de aprovações, assinaturas digitais (PlugSign/ICP-Brasil) e fluxos documentais integrado ao TOTVS RM e ao ecossistema Cronograma — em uso nas 5 concessionárias Way Brasil. Tecnologias: Next.js, React 19, TypeScript, Tailwind CSS, ASP.NET Core, C#, Microsoft SQL Server e react-pdf.",
     technologies: [
       "Next.js",
       "React 19",
@@ -67,10 +66,9 @@ export const projects: Project[] = [
     ],
     image: "/projects/papersign.png",
     video: "/videos/papersign.mp4",
-    videoStatus: "pending",
     featured: true,
     category: "Sistema Corporativo",
-    hasVideo: true,
+    hasVideo: false,
     professional: true,
   },
   {

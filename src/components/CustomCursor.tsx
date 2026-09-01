@@ -33,28 +33,29 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
-  const [isMobile, setIsMobile] = useState(false);
+  const [enabled, setEnabled] = useState(false);
+  const [hasMoved, setHasMoved] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const cursorRingRef = useRef<HTMLDivElement>(null);
   const cursorParticlesRef = useRef<HTMLDivElement>(null);
   const cursorTrailRef = useRef<HTMLDivElement>(null);
   const sparkleIdRef = useRef(0);
 
-  // Detectar se é mobile
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+    const finePointer = window.matchMedia('(pointer: fine)');
+    const update = () => setEnabled(finePointer.matches && window.innerWidth > 768);
+    update();
+    finePointer.addEventListener('change', update);
+    window.addEventListener('resize', update);
+    return () => {
+      finePointer.removeEventListener('change', update);
+      window.removeEventListener('resize', update);
     };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Função para criar faíscas
   const createSparkles = (x: number, y: number) => {
-    if (isMobile) return;
+    if (!enabled) return;
     
     const newSparkles: Sparkle[] = [];
     const sparkleCount = Math.floor(Math.random() * 3) + 2; // 2-4 faíscas
@@ -81,7 +82,7 @@ export default function CustomCursor() {
 
   // Função para atualizar faíscas
   const updateSparkles = () => {
-    if (isMobile) return;
+    if (!enabled) return;
     
     setSparkles(prev => 
       prev
@@ -98,12 +99,13 @@ export default function CustomCursor() {
   };
 
   useEffect(() => {
-    if (isMobile) return;
+    if (!enabled) return;
 
     let animationFrameId: number;
     let lastTime = 0;
 
     const updateMousePosition = (e: MouseEvent) => {
+      setHasMoved(true);
       // Atualização instantânea sem delay para todos os elementos
       setMousePosition({ x: e.clientX, y: e.clientY });
       
@@ -177,10 +179,9 @@ export default function CustomCursor() {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [isMobile]);
+  }, [enabled]);
 
-  // Não renderizar em mobile
-  if (isMobile) {
+  if (!enabled || !hasMoved) {
     return null;
   }
 
@@ -218,15 +219,15 @@ export default function CustomCursor() {
           position: 'fixed',
           left: mousePosition.x,
           top: mousePosition.y,
-          width: isHovering ? '120px' : '60px',
-          height: isHovering ? '120px' : '60px',
+          width: isHovering ? '48px' : '24px',
+          height: isHovering ? '48px' : '24px',
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(255, 77, 141, 0.4) 0%, rgba(138, 77, 255, 0.3) 30%, rgba(6, 182, 212, 0.2) 60%, transparent 100%)',
           pointerEvents: 'none',
           zIndex: 9997,
           transform: 'translate(-50%, -50%)',
           transition: 'all 0.3s ease', // Reduzido de 0.6s para 0.3s
-          opacity: isHovering ? 0.8 : 0.3,
+          opacity: isHovering ? 0.45 : 0.15,
           filter: 'blur(8px)',
         }}
       />

@@ -25,7 +25,7 @@ export default function Hero() {
   const { t } = useLanguage();
   return (
     // Seção principal com altura mínima da tela, centralizada e com overflow oculto
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden" style={{ backgroundColor: 'var(--color-dark)' }}>
+    <section id="hero" className="theme-hero min-h-screen flex items-center justify-center relative overflow-hidden">
       
       {/* 
         Fundo com partículas animadas para dar vida à seção
@@ -59,12 +59,12 @@ export default function Hero() {
           Usa motion.h1 para animações suaves de fade-in e slide-up
         */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
         >
-          <span style={{ color: 'var(--color-light-gray)' }}>{t('hero.headline.line1')}</span>
+          <span className="theme-heading-muted">{t('hero.headline.line1')}</span>
           <br />
           <span className="text-gradient">{t('hero.headline.line2')}</span>
         </motion.h1>
@@ -74,11 +74,10 @@ export default function Hero() {
           Apresenta Raphaela e sua localização
         */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl max-w-4xl mx-auto mb-12 leading-relaxed"
-          style={{ color: 'var(--color-light-gray)' }}
+          className="text-lg md:text-xl max-w-4xl mx-auto mb-12 leading-relaxed theme-text"
         >
           {t('hero.subtitle')}
           <br />
@@ -90,10 +89,11 @@ export default function Hero() {
           Link para portfólio e contato com animações
         */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }} // Delay maior que o subtítulo
-          className="flex flex-col sm:flex-row gap-8 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-8 justify-center items-center hero-cta"
+          style={{ marginBottom: '4rem' }}
         >
           {/* Botão principal para ver o portfólio */}
           <Link 
@@ -145,10 +145,10 @@ export default function Hero() {
           Sugere ao usuário que role para baixo para ver mais conteúdo
         */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }} // Aparece por último
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          transition={{ duration: 1, delay: 1 }}
+          className="hero-scroll-hint"
         >
           {/* Container do indicador com borda arredondada */}
           <motion.div

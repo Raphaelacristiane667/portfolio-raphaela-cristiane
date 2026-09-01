@@ -8,7 +8,7 @@ export default function UIDesignClient(): React.ReactElement {
   const { language } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[var(--color-dark)] text-black dark:text-gray-300">
+    <div className="theme-page">
       <div className="pt-20 pb-16 text-center">
         <div className="container-custom">
           <Link href="/services" className="inline-flex items-center text-pink-500 hover:text-pink-400 mb-8 transition-colors" style={{ textDecoration: 'none' }}>
@@ -23,10 +23,10 @@ export default function UIDesignClient(): React.ReactElement {
           </div>
 
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="text-gray-900 dark:text-gray-300">Design </span>
+            <span className="theme-heading-muted">Design </span>
             <span className="text-gradient">UI/UX</span>
           </h1>
-          <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
+          <p className="text-xl max-w-3xl mx-auto theme-text">
             {language === 'en' ? 'Intuitive, delightful interfaces focused on usability and modern aesthetics.' : 'Interfaces intuitivas e agradáveis para melhor experiência do usuário. Design focado na usabilidade e estética moderna.'}
           </p>
         </div>
@@ -35,7 +35,7 @@ export default function UIDesignClient(): React.ReactElement {
       <div className="container-custom pb-20">
         <div className="max-w-6xl mx-auto">
           <div className="mb-20">
-            <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-gray-300">
+            <h2 className="text-3xl font-bold mb-12 text-center theme-heading-muted">
               {language === 'en' ? 'What I offer' : 'O que ofereço'}
             </h2>
 
@@ -47,10 +47,10 @@ export default function UIDesignClient(): React.ReactElement {
                 { icon: <Users size={40} style={{ color: 'var(--color-primary)' }} />, title: language === 'en' ? 'User Research' : 'Pesquisa de Usuários', desc: language === 'en' ? 'Behavior and needs analysis to create effective solutions.' : 'Análise de comportamento e necessidades.' },
                 { icon: <Zap size={40} style={{ color: 'var(--color-primary)' }} />, title: 'Design System', desc: language === 'en' ? 'Component libraries for visual consistency.' : 'Bibliotecas de componentes para consistência visual.' }
               ].map((item, i) => (
-                <div key={i} className="text-center p-6 rounded-lg" style={{ backgroundColor: 'rgba(255, 77, 166, 0.08)' }}>
+                <div key={i} className="theme-highlight-card">
                   <div className="flex justify-center mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-300">{item.title}</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">{item.desc}</p>
+                  <h3 className="text-xl font-semibold mb-3 theme-heading-muted">{item.title}</h3>
+                  <p className="text-sm theme-text">{item.desc}</p>
                 </div>
               ))}
             </div>

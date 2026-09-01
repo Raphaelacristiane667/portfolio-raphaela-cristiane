@@ -1,19 +1,5 @@
-/**
- * Footer.tsx - Componente de rodapé da aplicação
- * 
- * Este componente renderiza o rodapé com:
- * - Informações de contato
- * - Links para redes sociais
- * - Informações sobre a desenvolvedora
- * - Layout responsivo para mobile e desktop
- * 
- * @author Raphaela Cristiane
- * @version 1.0.0
- */
-
 "use client";
 
-import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/LanguageProvider';
 import { Instagram, Linkedin, Github, Mail, MessageCircle } from 'lucide-react';
 
@@ -26,38 +12,20 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="py-12 border-t bg-white dark:bg-black border-black/10 dark:border-pink-500/40 text-black dark:text-gray-300">
+    <footer className="site-footer">
       <div className="container-custom">
-        {/* Layout horizontal com todas as informações lado a lado em uma linha */}
-        <div className="flex flex-wrap items-center justify-center gap-12">
-          
-          {/* Sobre Raphaela */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h3 className="text-2xl font-bold text-gradient mb-4">{t('footer.about.title')}</h3>
-            <p className="leading-relaxed max-w-xs text-gray-700 dark:text-gray-300">
-              {t('footer.about.text')}
-            </p>
-          </motion.div>
+        <div className="site-footer__grid">
+          <div className="site-footer__block">
+            <h3 className="site-footer__title text-gradient">{t('footer.about.title')}</h3>
+            <p className="site-footer__text">{t('footer.about.text')}</p>
+          </div>
 
-          {/* Contato */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h4 className="text-xl font-semibold mb-4 text-pink-500 dark:text-pink-500">{t('footer.contact')}</h4>
-            <div className="flex space-x-4">
+          <div className="site-footer__block">
+            <h4 className="site-footer__subtitle">{t('footer.contact')}</h4>
+            <div className="site-footer__icons">
               <a
                 href="mailto:raphaelacristiane668@gmail.com"
-                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border text-pink-500 border-pink-500/60 bg-white dark:bg-transparent"
+                className="site-footer__icon-btn"
                 title="Enviar email"
               >
                 <Mail size={20} />
@@ -66,64 +34,34 @@ export default function Footer() {
                 href="https://wa.me/553499385291?text=Olá Raphaela! Gostaria de conversar sobre um projeto."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 border text-pink-500 border-pink-500/60 bg-white dark:bg-transparent"
+                className="site-footer__icon-btn"
                 title="Conversar no WhatsApp"
               >
                 <MessageCircle size={20} />
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Redes Sociais */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h4 className="text-xl font-semibold mb-4 text-pink-500 dark:text-pink-500">{t('footer.social')}</h4>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
+          <div className="site-footer__block">
+            <h4 className="site-footer__subtitle">{t('footer.social')}</h4>
+            <div className="site-footer__icons">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300 border text-pink-500 border-pink-500/60 bg-white dark:bg-transparent"
+                  className="site-footer__icon-btn"
                   aria-label={social.label}
                 >
                   <social.icon size={20} />
-                </motion.a>
+                </a>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Linha divisória */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="border-t my-8"
-          style={{ borderColor: 'rgba(255, 77, 166, 0.2)' }}
-        />
-
-        {/* Copyright */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <p style={{ color: 'var(--color-light-gray)' }}>
-            {t('footer.copyright')}
-          </p>
-        </motion.div>
+        <p className="site-footer__copy">{t('footer.copyright')}</p>
       </div>
     </footer>
   );

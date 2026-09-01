@@ -8,7 +8,7 @@ export default function IntegrationsClient(): React.ReactElement {
   const { language } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[var(--color-dark)] text-black dark:text-gray-300">
+    <div className="theme-page">
       <div className="pt-20 pb-16 text-center">
         <div className="container-custom">
           <Link href="/services" className="inline-flex items-center text-pink-500 hover:text-pink-400 mb-8 transition-colors" style={{ textDecoration: 'none' }}>
@@ -21,10 +21,10 @@ export default function IntegrationsClient(): React.ReactElement {
             </div>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="text-gray-900 dark:text-gray-300">{language === 'en' ? 'Integrations & ' : 'Integrações e '}</span>
+            <span className="theme-heading-muted">{language === 'en' ? 'Integrations & ' : 'Integrações e '}</span>
             <span className="text-gradient">{language === 'en' ? 'Automation' : 'Automação'}</span>
           </h1>
-          <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
+          <p className="text-xl max-w-3xl mx-auto theme-text">
             {language === 'en' ? 'Transform your business with smart integration and automation solutions.' : 'Transforme seu negócio com soluções inteligentes de integração e automação.'}
           </p>
         </div>
@@ -34,7 +34,7 @@ export default function IntegrationsClient(): React.ReactElement {
         <div className="max-w-6xl mx-auto">
           {/* Benefícios */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-10 text-center text-gray-900 dark:text-gray-300">
+            <h2 className="text-3xl font-bold mb-10 text-center theme-heading-muted">
               {language === 'en' ? 'Why integrations and automation?' : 'Por que integrações e automação?'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -44,10 +44,10 @@ export default function IntegrationsClient(): React.ReactElement {
                 { icon: <CheckCircle size={40} style={{ color: 'var(--color-primary)' }} />, t: language === 'en' ? 'Fewer errors' : 'Menos erros', d: language === 'en' ? 'Eliminate human error with precise flows.' : 'Elimine erros humanos com fluxos precisos.' },
                 { icon: <Users size={40} style={{ color: 'var(--color-primary)' }} />, t: language === 'en' ? 'Better experience' : 'Melhor experiência', d: language === 'en' ? 'Faster, personalized service.' : 'Atendimento mais rápido e personalizado.' }
               ].map((b, i) => (
-                <div key={i} className="text-center p-6 rounded-lg" style={{ backgroundColor: 'rgba(255, 77, 166, 0.08)' }}>
+                <div key={i} className="theme-highlight-card">
                   <div className="flex justify-center mb-4">{b.icon}</div>
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-300">{b.t}</h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300">{b.d}</p>
+                  <h3 className="text-lg font-semibold mb-2 theme-heading-muted">{b.t}</h3>
+                  <p className="text-sm theme-text">{b.d}</p>
                 </div>
               ))}
             </div>
@@ -55,10 +55,10 @@ export default function IntegrationsClient(): React.ReactElement {
 
           {/* CTA */}
           <div className="text-center">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-300">
+            <h2 className="text-2xl font-bold mb-6 theme-heading-muted">
               {language === 'en' ? 'Ready to automate and integrate your systems?' : 'Pronto para automatizar e integrar seus sistemas?'}
             </h2>
-            <p className="text-lg mb-8 text-gray-700 dark:text-gray-300">
+            <p className="text-lg mb-8 theme-text">
               {language === 'en' ? 'Let’s connect everything and optimize your processes!' : 'Vamos conectar tudo e otimizar seus processos!'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

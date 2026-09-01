@@ -153,16 +153,15 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Renderizado só em viewport mobile — nunca no desktop */}
-      {isMobile && (
-        <div
-          id="mobile-nav-panel"
-          className={["site-header__mobile-panel", menuOpen ? "is-open" : ""].join(" ")}
-          role="dialog"
-          aria-modal={menuOpen}
-          aria-hidden={!menuOpen}
-          aria-label={language === "en" ? "Mobile menu" : "Menu mobile"}
-        >
+      {/* Painel mobile — CSS controla visibilidade por breakpoint */}
+      <div
+        id="mobile-nav-panel"
+        className={["site-header__mobile-panel", menuOpen ? "is-open" : ""].join(" ")}
+        role="dialog"
+        aria-modal={menuOpen}
+        aria-hidden={!menuOpen}
+        aria-label={language === "en" ? "Mobile menu" : "Menu mobile"}
+      >
           <div className="site-header__mobile-top">
             <span className="site-header__brand">Raphaela Cristiane</span>
             <button
@@ -197,7 +196,6 @@ export default function Header() {
             })}
           </nav>
         </div>
-      )}
     </>
   );
 }

@@ -45,6 +45,32 @@ const translations: TranslationDictionary = {
   "about.backend": { pt: "Backend", en: "Backend" },
   "about.tools": { pt: "Ferramentas", en: "Tools" },
 
+  // Way Brasil showcase
+  "way.badge": { pt: "Grupo Way Brasil · 5 concessionárias", en: "Way Brasil Group · 5 concessions" },
+  "way.title.part1": { pt: "Ecossistema ", en: "Corporate " },
+  "way.title.part2": { pt: "Corporativo", en: "Ecosystem" },
+  "way.subtitle": {
+    pt: "Cronograma e PaperSign formam um ecossistema integrado de gestão de projetos e assinaturas digitais, em uso nas cinco concessionárias do grupo Way Brasil — com RBAC por unidade, rastreabilidade e integração ao TOTVS RM.",
+    en: "Cronograma and PaperSign form an integrated ecosystem for project management and digital signatures, deployed across all five Way Brasil group concessions — with per-unit RBAC, traceability, and TOTVS RM integration."
+  },
+  "way.units.label": { pt: "Concessionárias atendidas", en: "Served concessions" },
+  "way.cronograma.title": { pt: "Cronograma Way Brasil", en: "Cronograma Way Brasil" },
+  "way.cronograma.desc": {
+    pt: "Gestão de projetos, Gantt/Kanban, pendências, DSP → RQ-154 → PaperSign e dashboards multi-unidade.",
+    en: "Project management, Gantt/Kanban, pending tasks, DSP → RQ-154 → PaperSign, and multi-unit dashboards."
+  },
+  "way.papersign.title": { pt: "PaperSign", en: "PaperSign" },
+  "way.papersign.desc": {
+    pt: "Aprovações e assinaturas digitais ICP-Brasil, fluxos documentais e integração com RM e Cronograma.",
+    en: "ICP-Brasil digital approvals and signatures, document workflows, and integration with RM and Cronograma."
+  },
+  "way.expand": { pt: "Ampliar infográfico", en: "Expand infographic" },
+  "way.close": { pt: "Fechar", en: "Close" },
+  "way.footnote": {
+    pt: "Os cards abaixo detalham cada sistema, tecnologias e demonstrações em vídeo.",
+    en: "The project cards below detail each system, tech stack, and video demos."
+  },
+
   // Featured Services
   "services.heading": { pt: "Serviços em Destaque", en: "Featured Services" },
   "services.subtitle": { pt: "Soluções digitais completas para transformar suas ideias em realidade", en: "Complete digital solutions to turn your ideas into reality" },

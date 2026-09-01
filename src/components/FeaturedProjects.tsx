@@ -40,7 +40,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
           ...project,
           title: 'Cronograma Way Brasil',
           description:
-            'Corporate platform for schedules, projects, tasks, Gantt/Kanban, multi-unit RBAC, audit, DSP (RQ-154), and PaperSign integration. Technologies: React 19, Vite, JavaScript, Node.js, Express, Microsoft SQL Server, SAML, IIS, and GitHub Actions.',
+            'Corporate platform for schedules, projects, tasks, Gantt/Kanban, multi-unit RBAC, audit, DSP (RQ-154), and PaperSign integration — in production across all 5 Way Brasil concessions (WAY 364, 153, 112, 306, and 262). Technologies: React 19, Vite, JavaScript, Node.js, Express, Microsoft SQL Server, SAML, IIS, and GitHub Actions.',
           category: 'Corporate System',
         };
       case 'papersign':
@@ -48,7 +48,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
           ...project,
           title: 'PaperSign',
           description:
-            'Approvals, digital signatures (PlugSign/ICP-Brasil), and document workflows integrated with TOTVS RM and the Cronograma ecosystem. Technologies: Next.js, React 19, TypeScript, Tailwind CSS, ASP.NET Core, C#, Microsoft SQL Server, and react-pdf.',
+            'Approvals, digital signatures (PlugSign/ICP-Brasil), and document workflows integrated with TOTVS RM and the Cronograma ecosystem — deployed across all 5 Way Brasil concessions. Technologies: Next.js, React 19, TypeScript, Tailwind CSS, ASP.NET Core, C#, Microsoft SQL Server, and react-pdf.',
           category: 'Corporate System',
         };
       case 'indicadores-corporativos':
@@ -146,7 +146,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
 
   return (
     // Seção principal com padding vertical e fundo que respeita tema
-    <section id="projects" className="section-anchor py-20 bg-white dark:bg-[var(--color-dark)]">
+    <section id="projects" className="section-anchor py-20">
       <div className="container-custom">
         
         {/* 
@@ -154,20 +154,19 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
           Aparece primeiro para contextualizar o conteúdo
         */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}     // Estado inicial: invisível e 30px abaixo
-          whileInView={{ opacity: 1, y: 0 }}  // Estado final: visível e na posição normal
-          transition={{ duration: 0.8 }}       // Duração da animação
-          viewport={{ once: true }}            // Animação acontece apenas uma vez
+          initial={false}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
           {/* Título principal com cores diferenciadas */}
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            <span className="text-gray-700 dark:text-gray-300">{t('projects.heading.part1')}</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="theme-heading-muted">{t('projects.heading.part1')}</span>
             <span className="text-gradient">{t('projects.heading.part2')}</span>
           </h2>
           
-          {/* Descrição explicativa da seção */}
-          <p className="text-lg max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
+          <p className="text-lg max-w-2xl mx-auto theme-text">
             {t('projects.subtitle')}
           </p>
         </motion.div>
@@ -186,18 +185,15 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
               <Card 
-                className="overflow-hidden group h-full relative shadow-none" 
+                className="project-card overflow-hidden group h-full relative shadow-none" 
                 style={{ 
-                  backgroundColor: 'rgba(255, 255, 255, 0.02)',
                   backdropFilter: 'blur(10px)',
-                  border: '1px solid transparent',
-                  boxShadow: 'none',
                   transition: 'all 0.5s ease',
                   cursor: 'pointer'
                 }}
@@ -274,29 +270,18 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
                         console.log('✅ Imagem carregada com sucesso:', project.image);
                       }}
                     />
-                    {project.videoStatus === 'pending' && (
-                      <div
-                        className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/75"
-                        aria-label={t('projects.video.reserved')}
-                      >
-                        <Play size={32} className="text-[var(--color-primary)] opacity-80" />
-                        <span className="rounded-full border border-[var(--color-primary)]/40 bg-black/60 px-3 py-1 text-xs font-medium text-[var(--color-primary)]">
-                          {t('projects.video.reserved')}
-                        </span>
-                      </div>
-                    )}
                   </div>
                   
                   {/* 
                     Overlay com botões que aparece no hover
                     Fundo semi-transparente com botões de ação
                   */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+                  <div className="project-card__overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
                     {/* 
                       Botão para ver vídeo (se disponível) ou projeto
                       Mostra ícone diferente baseado no tipo de conteúdo
                     */}
-                    {project.hasVideo && project.videoStatus !== 'pending' ? (
+                    {project.hasVideo ? (
                       <button
                         style={{ 
                           backgroundColor: 'var(--color-primary)',
@@ -315,19 +300,6 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
                         <Play size={16} className="mr-2" />
                         {t('projects.btn.video')}
                       </button>
-                    ) : project.hasVideo && project.videoStatus === 'pending' ? (
-                      <span
-                        style={{
-                          padding: '8px 16px',
-                          borderRadius: '6px',
-                          color: 'var(--color-primary)',
-                          border: '1px solid rgba(255, 77, 166, 0.4)',
-                          fontSize: '14px',
-                          backgroundColor: 'rgba(0,0,0,0.5)',
-                        }}
-                      >
-                        {t('projects.btn.videoSoon')}
-                      </span>
                     ) : project.link ? (
                       <a 
                         href={project.link} 
@@ -353,7 +325,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
                     ) : (
                       <button
                         style={{ 
-                          backgroundColor: 'var(--color-light-gray)',
+                          backgroundColor: 'var(--color-text-muted)',
                           padding: '8px 16px',
                           borderRadius: '6px',
                           color: 'white',
@@ -379,7 +351,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
                 */}
                 <CardHeader className="pb-4 relative z-10">
                   <CardTitle 
-                    className="text-xl transition-colors duration-300 text-gray-900 dark:text-gray-200" 
+                    className="project-card__title text-xl transition-colors duration-300" 
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#FF4DA6';
                     }}
@@ -390,7 +362,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
                     {project.title}
                   </CardTitle>
                   <CardDescription 
-                    className="leading-relaxed transition-colors duration-300 text-gray-700 dark:text-gray-400"
+                    className="project-card__desc leading-relaxed transition-colors duration-300"
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '';
                     }}
@@ -447,7 +419,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
                       <span style={{
                         padding: '4px 8px',
                         backgroundColor: 'rgba(204, 204, 204, 0.1)',
-                        color: 'var(--color-light-gray)',
+                        color: 'var(--color-text-muted)',
                         fontSize: '0.75rem',
                         borderRadius: '6px'
                       }}>
@@ -458,8 +430,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
 
                   {/* Categoria do projeto com cor destacada */}
                   <div 
-                    className="text-sm font-medium mb-4 transition-colors duration-300" 
-                    style={{ color: 'var(--color-primary)' }}
+                    className="project-card__category text-sm font-medium mb-4 transition-colors duration-300"
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#FF4DA6';
                     }}
@@ -501,7 +472,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
                           {t('projects.btn.details')}
                         </button>
                       </Link>
-                    ) : project.hasVideo && project.videoStatus !== 'pending' ? (
+                    ) : project.hasVideo ? (
                       <button
                         onClick={() => openVideoModal(project.video!, project.title, project.description)}
                         className="project-button"
@@ -529,26 +500,6 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
                       >
                         {t('projects.btn.details')}
                       </button>
-                    ) : project.hasVideo && project.videoStatus === 'pending' ? (
-                      <button
-                        disabled
-                        className="project-button"
-                        style={{
-                          background: 'transparent',
-                          border: '1px solid rgba(255, 77, 166, 0.4)',
-                          borderRadius: '8px',
-                          padding: '15px 50px',
-                          color: 'var(--color-primary)',
-                          fontWeight: 'bold',
-                          fontSize: '16px',
-                          cursor: 'not-allowed',
-                          opacity: 0.7,
-                          display: 'inline-block',
-                          width: 'auto',
-                        }}
-                      >
-                        {t('projects.btn.videoSoon')}
-                      </button>
                     ) : null}
                   </div>
                 </CardContent>
@@ -562,7 +513,7 @@ export default function FeaturedProjects({ showAll = false }: { showAll?: boolea
           Aparece por último com animação delayada
         */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }} // Delay maior para aparecer por último
           viewport={{ once: true }}
